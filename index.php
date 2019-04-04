@@ -16,11 +16,10 @@
         isset($_POST['password']) ? $password = $_POST['password'] : $password = "";
 
         if(!($login == "" || $password == "")){
-            $acc = new Account($login, $password);
-            if($acc->check_login()){
-                header("Location: accueil.php");
+            $acc = new Account($login);
+            if($acc->check_login($password)){
                 $_SESSION["login"] = $acc->login;
-                
+                header("Location: accueil.php");
             }
         }
 

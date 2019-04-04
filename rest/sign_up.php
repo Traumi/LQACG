@@ -28,8 +28,8 @@
 	$sth->execute(array(':login' => $login));
     if($sth->fetch()) die();
 
-    $sql = 'INSERT INTO account (LOGIN, PASSWORD, PROFIL, INSCRIPTION) VALUES (:login, :password, 0, :insc)';
+    /*$sql = 'INSERT INTO account (LOGIN, PASSWORD, PROFIL, INSCRIPTION) VALUES (:login, :password, 0, :insc)';
 	$sth = $dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-    $sth->execute(array(':login' => $login, ':password' => $pw, ':insc' => $insc));
+    $sth->execute(array(':login' => $login, ':password' => $pw, ':insc' => $insc));*/
 
 ?>
