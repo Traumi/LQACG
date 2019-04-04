@@ -3,8 +3,11 @@
 
     <?php
 
+        $site = new Site();
+
         isset($_SESSION["login"]) ? $login = $_SESSION["login"] : header("Location: index.php");
         $acc = new Account($login);
+        
         $profil = $acc->get_profil();
         if($profil == null){
             header("Location: index.php");
@@ -13,10 +16,10 @@
             $profil['TPC'] = $acc->generate_tpc($login);
         }
 
-        
+        $request = file_get_contents("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Traumination?api_key=RGAPI-da466fbb-55c2-2360-f933-143e13f229de");
+        //file_get_contents('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'.$pseudo.'?api_key='.$key
 
         if($profil['LOL_ACCOUNT'] == null){
-            $thirdpartycode = ""
     ?>
         <div>
             <h4>Associer votre compte : </h4>
@@ -32,10 +35,6 @@
             <input name="pseudo" placeholder="Pseudo LoL"/>
             <input type="submit"/>
         </div>
-        
-        
-        
-        
     <?php
         }else{
     ?>
