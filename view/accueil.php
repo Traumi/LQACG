@@ -39,14 +39,21 @@
     <?php
         }else{
     ?>
-        Quêtes et challenges :
-        - Quêtes effectuées : 0
-
-        Succès :
-
-
-        Développeur :
-        - Clé de développement : 
+        <div>
+            <h4>Quêtes et challenges :</h4>
+            <ul>
+                <li>Quêtes effectuées : 0</li>
+                <li>Challenges gagnés : 0</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Succès :</h4>
+            KEDAL
+        </div>
+        <div>
+            <h4>Développeur :</h4>
+            <p>Clé de développement : ##############</p>
+        </div>
     <?php
         }
     ?>
