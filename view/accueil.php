@@ -26,10 +26,11 @@
             <ul>
                 <li>Aller dans le client LoL</li>
                 <li>Aller dans Paramètres > Vérification</li>
-                <li>Entrez le Third-Party-Code</li>
-                <li>Entrez votre pseudo ici puis valider</li>
+                <li>Coller le Third-Party-Code</li>
+                <li>Entrer votre pseudo ici puis valider</li>
             </ul>
             <input name="pseudo" placeholder="Pseudo LoL"/>
+            <input type="submit"/>
         </div>
         
         
