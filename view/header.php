@@ -1,9 +1,45 @@
-<header>
-    <?php  
-        if(isset($_SESSION["login"])){
-            echo $_SESSION["login"];
-            echo '<a href="disconnect.php"><button>Déconnexion</button></a>';
-        }
-    ?>
+<header style="margin-bottom:60px;">
     
+    <!--<nav id="head">
+        <ul>
+            <li><a href="index.php"><span class="element title">LQACG</span></a></li>
+            <?php  
+                if(isset($_SESSION["login"])){
+            ?>
+            <li><span class="element"><?php echo $_SESSION["login"]; ?></span></li>
+            <?php
+                    //echo $_SESSION["login"];
+                    //echo '<a href="disconnect.php"><button>Déconnexion</button></a>';
+                }
+            ?>
+        </ul>
+    </nav>-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">LQACG</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav ">
+            <!--<li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>-->
+            <?php  
+                if(isset($_SESSION["login"])){
+            ?>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php echo $_SESSION["login"]; ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="disconnect.php">Déconnexion</a>
+                </div>
+            </li>
+            <?php
+                }
+            ?>
+            </ul>
+        </div>
+    </nav>
 </header>

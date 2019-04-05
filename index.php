@@ -1,6 +1,6 @@
 <html lang="fr">
     <head>
-    
+        <?php require_once("view/imports.php"); ?>
     </head>
     <body>
     <?php  
@@ -10,7 +10,7 @@
         require_once("object/account.php");
 
 
-        
+        isset($_SESSION["login"]) ? header("Location: accueil.php") : null;
 
         isset($_POST['login']) ? $login = $_POST['login'] : $login = "";
         isset($_POST['password']) ? $password = $_POST['password'] : $password = "";

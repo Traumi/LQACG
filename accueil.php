@@ -1,6 +1,6 @@
 <html lang="fr">
     <head>
-    
+        <?php require_once("view/imports.php"); ?>
     </head>
     <body>
     <?php  
