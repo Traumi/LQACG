@@ -41,7 +41,7 @@
             <h4>Associer votre compte : </h4>
             <p>- Votre Third-Party-Code : <input value="<?php echo $profil['TPC']; ?>" onclick="this.focus();this.select()" readonly="readonly"/></p>
             <p>Pour associer votre compte LoL :</p>
-             <!-- Mémo pour savoir où mettre les balises UL et LI : Il manque ul sur ton li -->
+             <!-- Mémo pour savoir où mettre les balises <ul> et <li> : Il manque ul sur ton li -->
             <ul>
                 <li>Aller dans le client LoL</li>
                 <li>Aller dans Paramètres > Vérification</li>
