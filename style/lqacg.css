@@ -33,6 +33,14 @@ body.dark nav ul li a, body.dark nav a{
     color:#efefef!important;
 }
 
+body.dark nav .dropdown-menu{
+    background: #2d2d2d;
+}
+
+body.dark nav .dropdown-menu > a:hover{
+    background: #3d3d3d;
+}
+
 body.dark input.form-control{
     background:#1f1f1f;
     color:white;
