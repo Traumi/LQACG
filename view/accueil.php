@@ -16,7 +16,17 @@
             $profil['TPC'] = $acc->generate_tpc($login);
         }
 
-        $request = file_get_contents("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/Traumination?api_key=RGAPI-da466fbb-55c2-2360-f933-143e13f229de");
+
+        if(isset($_POST["pseudo"])){
+            $pseudo = str_replace(" ", "", $_POST["pseudo"]); 
+            $request = file_get_contents("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/".$pseudo."?api_key=".$site->key);
+            $player = json_decode($request, true);
+            //var_dump($player);
+            $request = file_get_contents("https://euw1.api.riotgames.com/lol/platform/v4/third-party-code/by-summoner/".$player['id']."?api_key=".$site->key);
+            $tpc = json_decode($request, true);
+            var_dump($tpc);
+        }
+        
         //file_get_contents('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'.$pseudo.'?api_key='.$key
 
         if($profil['LOL_ACCOUNT'] == null){
@@ -32,8 +42,10 @@
                 <li>Coller le Third-Party-Code</li>
                 <li>Entrer votre pseudo ici puis valider</li>
             </ul>
-            <input name="pseudo" placeholder="Pseudo LoL"/>
-            <input type="submit"/>
+            <form action="" method="post">
+                <input name="pseudo" placeholder="Pseudo LoL"/>
+                <input type="submit"/>
+            </form>
         </div>
     <?php
         }else{
