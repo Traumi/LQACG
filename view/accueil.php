@@ -35,11 +35,32 @@
             }
         }
 
-        if($profil['LOL_ACCOUNT'] == null){
+        if(!$profil['LOL_ACCOUNT'] == null){
     ?>
-        <div>
+        <div class="container">
             <h4>Associer votre compte : </h4>
-            <p>- Votre Third-Party-Code : <input value="<?php echo $profil['TPC']; ?>" onclick="this.focus();this.select()" readonly="readonly"/></p>
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-weight:500;">Third Party Code</span>
+                        </div>
+                        <input value="<?php echo $profil['TPC']; ?>" id="tpc" type="text" class="form-control" placeholder="Third Party Code" onclick="this.focus();this.select()" readonly="readonly">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" onclick="copy_tpc()" type="button">Copier</button>
+                        </div>
+                    </div>
+                    <script>
+                        function copy_tpc() {
+                        /* Get the text field */
+                        var copyText = document.getElementById("tpc");
+                        copyText.select();
+                        document.execCommand("copy");
+                        }
+                    </script>
+                </div>
+                
+            </div>
             <p>Pour associer votre compte LoL :</p>
              <!-- Mémo pour savoir où mettre les balises <ul> et <li> : Il manque ul sur ton li -->
             <ul>
@@ -49,8 +70,19 @@
                 <li>Entrer votre pseudo ici puis valider</li>
             </ul>
             <form action="" method="post">
-                <input name="pseudo" placeholder="Pseudo LoL"/>
-                <input type="submit"/>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="font-weight:500;">Pseudo</span>
+                            </div>
+                            <input name="pseudo" type="text" class="form-control" placeholder="Pseudo LoL">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit" onclick="copy_tpc()" type="button">Valider</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     <?php

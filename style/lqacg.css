@@ -13,6 +13,50 @@ footer{
 
 footer > .night{
     position:absolute;
-    right:0;
+    right:10px;
     top:10px;
+}
+
+/*D4RK CSS*/
+body.dark{
+    background:#333;
+    color:#efefef;
+}
+body.dark footer{
+    background:#222;
+}
+body.dark nav{
+    background:#222!important;
+}
+
+body.dark nav ul li a, body.dark nav a{
+    color:#efefef!important;
+}
+
+body.dark input.form-control{
+    background:#1f1f1f;
+    color:white;
+    border-color:#ddd;
+}
+
+body.dark .input-group button{
+    background:#1f1f1f;
+    color:white;
+    border-color:#ddd;
+}
+
+body.dark .input-group button:hover{
+    background:#292929;
+    color:white;
+    border-color:#ddd;
+}
+
+body.dark .input-group span{
+    background:#1f1f1f;
+    color:white;
+    border-color:#ddd;
+}
+
+body.dark input::placeholder{
+    color:#c3c3c3;
 }
