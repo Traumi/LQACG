@@ -1,21 +1,6 @@
 <header style="margin-bottom:60px;">
-    
-    <!--<nav id="head">
-        <ul>
-            <li><a href="index.php"><span class="element title">LQACG</span></a></li>
-            <?php  
-                if(isset($_SESSION["login"])){
-            ?>
-            <li><span class="element"><?php echo $_SESSION["login"]; ?></span></li>
-            <?php
-                    //echo $_SESSION["login"];
-                    //echo '<a href="disconnect.php"><button>Déconnexion</button></a>';
-                }
-            ?>
-        </ul>
-    </nav>-->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">LQACG</a>
+        <a class="navbar-brand" href="accueil.php">LQACG</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,6 +18,7 @@
                     <?php echo $_SESSION["login"]; ?>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="accueil.php">Mon profil</a>
                     <a class="dropdown-item" href="disconnect.php">Déconnexion</a>
                 </div>
             </li>
