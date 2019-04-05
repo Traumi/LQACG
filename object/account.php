@@ -24,5 +24,9 @@
             $this->db->set_tpc($this->login, $tpc);
             return $tpc;
         }
+
+        public function setLoLAccount($pseudo, $tpc){
+            $this->db->set_lol_account($this->login, $pseudo, $tpc);
+        }
     }
 ?>

@@ -21,13 +21,19 @@
             $pseudo = str_replace(" ", "", $_POST["pseudo"]); 
             $request = file_get_contents("https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/".$pseudo."?api_key=".$site->key);
             $player = json_decode($request, true);
-            //var_dump($player);
             $request = file_get_contents("https://euw1.api.riotgames.com/lol/platform/v4/third-party-code/by-summoner/".$player['id']."?api_key=".$site->key);
             $tpc = json_decode($request, true);
-            var_dump($tpc);
+            if($tpc == $profil['TPC']){
+                $acc->setLoLAccount($pseudo, $tpc);
+                //Refresh du profil
+                $profil = $acc->get_profil();
+
+                $myfile = fopen("data/".$pseudo.".json", "w");
+                $txt = '{"farm":0, "pentakill":0}';
+                fwrite($myfile, $txt);
+                fclose($myfile);
+            }
         }
-        
-        //file_get_contents('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'.$pseudo.'?api_key='.$key
 
         if($profil['LOL_ACCOUNT'] == null){
     ?>
@@ -49,6 +55,14 @@
         </div>
     <?php
         }else{
+            $pseudo = str_replace(" ", "", $profil['LOL_ACCOUNT']); 
+            if(!file_exists("data/".$pseudo.".json")){
+                $myfile = fopen("data/".$pseudo.".json", "w");
+                $txt = '{"farm":0, "pentakill":0}';
+                fwrite($myfile, $txt);
+                fclose($myfile);
+            }
+            
     ?>
         <div>
             <h4>Quêtes et challenges :</h4>

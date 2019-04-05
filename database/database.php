@@ -50,6 +50,12 @@
             $sth->execute(array(':login' => $login, ':tpc' => $tpc));
         }
 
+        public function set_lol_account($login, $pseudo, $tpc){
+            $sql = 'UPDATE account SET LOL_ACCOUNT = :pseudo WHERE LOGIN = :login AND TPC = :tpc';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':login' => $login, ':tpc' => $tpc, ':pseudo' => $pseudo));
+        }
+
     }
 
 ?>
