@@ -8,7 +8,7 @@ LoL Quest And Challenges Generator
     class Site{
         public function __construct() {
             $this->version = "0.1";
-            $this->riotPatch = "9.6.1";
+            $this->riotPatch = "9.7.1";
             $this->key = "YOUR-API-KEY";
         }
     }
