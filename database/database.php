@@ -8,8 +8,6 @@
             $this->dbh = new PDO('mysql:host=localhost;dbname=lolquests', $user, $pass);
         }
 
-        
-
         public function login($login, $password){
             $sql = 'SELECT * FROM account WHERE login = :login';
             $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
@@ -21,6 +19,28 @@
             }else{
                 return false;
             }
+        }
+
+        public function subscribe($login, $pw){
+
+            if($login == "" || $pw == "") return false;
+
+            $options = [
+                'cost' => 12,
+            ];
+            $pw = password_hash($pw, PASSWORD_BCRYPT, $options);
+            $insc = date('Y-m-d H:i:s');
+
+            $sql = 'SELECT * FROM account WHERE login = :login';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':login' => $login));
+            if($sth->fetch()) return false;
+
+            $sql = 'INSERT INTO account (LOGIN, PASSWORD, PROFIL, INSCRIPTION) VALUES (:login, :password, 0, :insc)';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':login' => $login, ':password' => $pw, ':insc' => $insc));
+
+            return true;
         }
 
         public function profil($login){

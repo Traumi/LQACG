@@ -13,6 +13,10 @@
             return $this->db->login($this->login, $password);
         }
 
+        public function subscribe($password){
+            return $this->db->subscribe($this->login, $password);
+        }
+
         public function get_profil(){
             return $this->db->profil($this->login);
         }

@@ -35,9 +35,9 @@
             }
         }
 
-        if(!$profil['LOL_ACCOUNT'] == null){
+        if($profil['LOL_ACCOUNT'] == null){
     ?>
-        <div class="container">
+        <div>
             <h4>Associer votre compte : </h4>
             <div class="row">
                 <div class="col-6">
