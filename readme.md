@@ -21,3 +21,8 @@ LoL Quest And Challenges Generator
 
 ## API 
 - Will be implemented yet, you'll have to submit for an access to it, then you'll have a development key
+
+## Versions releases
+| Version |   Date   |
+|:-------:|:--------:|
+|0.1      |08/04/2019|
