@@ -5,7 +5,7 @@
         public function __construct() {
             $user = "root";
             $pass = "";
-            $this->dbh = new PDO('mysql:host=localhost;dbname=lolquests', $user, $pass);
+            $this->dbh = new PDO('mysql:host=localhost;dbname=lolquests;charset=UTF8', $user, $pass);
         }
 
         public function login($login, $password){
@@ -62,6 +62,13 @@
             }else{
                 return $res['LOL_ACCOUNT'];
             }
+        }
+
+        public function get_quests_list(){
+            $sql = 'SELECT * FROM quests';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute();
+            return $sth->fetchAll();
         }
 
         public function set_tpc($login, $tpc){
