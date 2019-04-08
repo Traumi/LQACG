@@ -17,6 +17,10 @@ footer > .night{
     top:10px;
 }
 
+.row{
+    margin:0;
+}
+
 /*D4RK CSS*/
 body.dark{
     background:#333;
@@ -71,4 +75,8 @@ body.dark input::placeholder{
 
 body.dark table.table{
     color:white;
+}
+
+body.dark table.table tbody tr:hover{
+    color:#dedede;
 }

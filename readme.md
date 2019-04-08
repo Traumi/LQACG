@@ -20,7 +20,7 @@ LoL Quest And Challenges Generator
 - Simply run it on an Apache Server
 
 ## API 
-- Will be implemented yet, you'll have to submit for an access to it, then you'll have a development key
+- Not implemented yet, you'll have to submit for an access to it, then you'll have a development key
 
 ## Versions releases
 | Version |   Date   |                       Content                         |

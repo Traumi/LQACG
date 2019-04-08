@@ -1,5 +1,5 @@
 <div>
-    <h3>Mon profil</h3>
+    <h3 class="text-center">Mon profil</h3>
 
     <?php
 
@@ -37,53 +37,54 @@
 
         if($profil['LOL_ACCOUNT'] == null){
     ?>
-        <div>
-            <h4>Associer votre compte : </h4>
-            <div class="row">
-                <div class="col-6">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" style="font-weight:500;">Third Party Code</span>
-                        </div>
-                        <input value="<?php echo $profil['TPC']; ?>" id="tpc" type="text" class="form-control" placeholder="Third Party Code" onclick="this.focus();this.select()" readonly="readonly">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" onclick="copy_tpc()" type="button">Copier</button>
-                        </div>
-                    </div>
-                    <script>
-                        function copy_tpc() {
-                        /* Get the text field */
-                        var copyText = document.getElementById("tpc");
-                        copyText.select();
-                        document.execCommand("copy");
-                        }
-                    </script>
-                </div>
-                
-            </div>
-            <p>Pour associer votre compte LoL :</p>
-             <!-- Mémo pour savoir où mettre les balises <ul> et <li> : Il manque ul sur ton li -->
-            <ul>
-                <li>Aller dans le client LoL</li>
-                <li>Aller dans Paramètres > Vérification</li>
-                <li>Coller le Third-Party-Code</li>
-                <li>Entrer votre pseudo ici puis valider</li>
-            </ul>
-            <form action="" method="post">
-                <div class="row">
-                    <div class="col-6">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h4>Associer votre compte : </h4>
+                <div>
+                    <div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" style="font-weight:500;">Pseudo</span>
+                                <span class="input-group-text" style="font-weight:500;">Third Party Code</span>
                             </div>
-                            <input name="pseudo" type="text" class="form-control" placeholder="Pseudo LoL">
+                            <input value="<?php echo $profil['TPC']; ?>" id="tpc" type="text" class="form-control" placeholder="Third Party Code" onclick="this.focus();this.select()" readonly="readonly">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="submit" onclick="copy_tpc()" type="button">Valider</button>
+                                <button class="btn btn-outline-secondary" onclick="copy_tpc()" type="button">Copier</button>
                             </div>
                         </div>
+                        <script>
+                            function copy_tpc() {
+                            /* Get the text field */
+                            var copyText = document.getElementById("tpc");
+                            copyText.select();
+                            document.execCommand("copy");
+                            }
+                        </script>
                     </div>
+                    
                 </div>
-            </form>
+                <p>Pour associer votre compte LoL :</p>
+                <!-- Mémo pour savoir où mettre les balises <ul> et <li> : Il manque ul sur ton li -->
+                <ul>
+                    <li>Aller dans le client LoL</li>
+                    <li>Aller dans Paramètres > Vérification</li>
+                    <li>Coller le Third-Party-Code</li>
+                    <li>Entrer votre pseudo ici puis valider</li>
+                </ul>
+                <form action="" method="post">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-weight:500;">Pseudo</span>
+                        </div>
+                        <input name="pseudo" type="text" class="form-control" placeholder="Pseudo LoL">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" onclick="copy_tpc()" type="button">Valider</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            
+            
         </div>
     <?php
         }else{
