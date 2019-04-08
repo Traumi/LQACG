@@ -13,9 +13,9 @@ LoL Quest And Challenges Generator
         }
     }
     
-
 ?>
 ```
+- Add a ddragon folder and paste your patch version of ddragon : [https://ddragon.leagueoflegends.com/cdn/dragontail-9.7.1.tgz](9.7.1 Patch)
 - Create a database with the sql file available here
 - Simply run it on an Apache Server
 
