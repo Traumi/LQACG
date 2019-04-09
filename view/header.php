@@ -19,7 +19,8 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="accueil.php">Mon profil</a>
-                    <a class="dropdown-item" href="quests.php">Quètes</a>
+                    <a class="dropdown-item" href="trophies.php">Trophées</a>
+                    <a class="dropdown-item" href="quests.php">Quêtes</a>
                     <a class="dropdown-item" href="disconnect.php">Déconnexion</a>
                 </div>
             </li>
