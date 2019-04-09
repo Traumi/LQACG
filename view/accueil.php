@@ -25,13 +25,7 @@
             $tpc = json_decode($request, true);
             if($tpc == $profil['TPC']){
                 $acc->setLoLAccount($pseudo, $tpc);
-                //Refresh du profil
                 $profil = $acc->get_profil();
-
-                $myfile = fopen("data/".$pseudo.".json", "w");
-                $txt = '{"farm":0, "pentakill":0}';
-                fwrite($myfile, $txt);
-                fclose($myfile);
             }
         }
 
@@ -88,14 +82,7 @@
         </div>
     <?php
         }else{
-            $pseudo = str_replace(" ", "", $profil['LOL_ACCOUNT']); 
-            if(!file_exists("data/".$pseudo.".json")){
-                $myfile = fopen("data/".$pseudo.".json", "w");
-                $txt = '{"farm":0, "pentakill":0}';
-                fwrite($myfile, $txt);
-                fclose($myfile);
-            }
-            
+            $pseudo = str_replace(" ", "", $profil['LOL_ACCOUNT']);
     ?>
         <div>
             <h4>Quêtes et challenges :</h4>

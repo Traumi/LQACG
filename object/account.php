@@ -32,5 +32,13 @@
         public function setLoLAccount($pseudo, $tpc){
             $this->db->set_lol_account($this->login, $pseudo, $tpc);
         }
+
+        public function getLoLAccount($pseudo){
+            return $this->db->get_lol_account($pseudo);
+        }
+
+        public function update_lol_profile($lol_profil){
+            $this->db->update_lol_account($lol_profil);
+        }
     }
 ?>

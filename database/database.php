@@ -81,6 +81,23 @@
             $sql = 'UPDATE account SET LOL_ACCOUNT = :pseudo WHERE LOGIN = :login AND TPC = :tpc';
             $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute(array(':login' => $login, ':tpc' => $tpc, ':pseudo' => $pseudo));
+
+            $sql = 'INSERT INTO lol_profil(PSEUDO) VALUES (:pseudo)';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':pseudo' => $pseudo));
+        }
+
+        public function get_lol_account($pseudo){
+            $sql = 'SELECT * FROM lol_profile WHERE PSEUDO = :pseudo';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':pseudo' => $pseudo));
+            return $sth->fetch();
+        }
+
+        public function update_lol_account($profil){
+            $sql = 'UPDATE lol_profile SET LAST_UPDATE = CURRENT_TIMESTAMP, FARM = :farm, PENTA = :penta WHERE PSEUDO = :pseudo';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':pseudo' => $profil['PSEUDO'], ':farm' => $profil['FARM'], ':penta' => $profil['PENTA']));
         }
 
     }

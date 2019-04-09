@@ -23,6 +23,8 @@ LoL Quest And Challenges Generator
 - Not implemented yet, you'll have to submit for an access to it, then you'll have a development key
 
 ## Versions releases
-| Version |   Date   |                       Content                         |
-|:-------:|:--------:|:-----------------------------------------------------:|
-|0.1      |08/04/2019|Project initialization, basical functionnalities added.|
+| Version |    Date   |                       Content                         |
+|:-------:|:---------:|:-----------------------------------------------------:|
+|0.3      |IN PROGRESS|Link between data and quests.                          |
+|0.2      |09/04/2019 |Quests display, API use & first values.                |
+|0.1      |08/04/2019 |Project initialization, basical functionnalities added.|
