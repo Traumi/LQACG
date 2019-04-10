@@ -21,6 +21,104 @@ footer > .night{
     margin:0;
 }
 
+.tr-trophy{
+    border:solid black 3px;
+    border-radius:50%;
+    position: relative;
+    width: 80%;
+    padding-top: 80%; /* 1:1 Aspect Ratio */
+    margin:auto;
+}
+
+.tr-trophy-type {
+    position:  absolute;
+    bottom: 25px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+
+.tr-trophy-image{
+    margin:auto;
+    margin-top:5%;
+    position:  absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top:0;
+    width:60%;
+}
+
+.tr-trophy-value {
+    position:  absolute;
+    bottom: 30px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 40px;
+    font-weight:800;
+}
+
+.tr-trophy-act-value {
+    position:  absolute;
+    bottom: 10px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight:500;
+}
+
+.wood .tr-trophy{
+    border:solid #966f33 3px;
+}
+
+.wood {
+    color: #966f33;
+}
+
+.iron .tr-trophy{
+    border:solid #65584e 3px;
+}
+
+.iron {
+    color: #65584e;
+}
+
+.bronze .tr-trophy{
+    border:solid #cd7f32 3px;
+}
+
+.bronze {
+    color: #cd7f32;
+}
+
+.silver .tr-trophy{
+    border:solid #CECECE 3px;
+}
+
+.silver {
+    color: #CECECE;
+}
+
+.gold .tr-trophy{
+    border:solid #ffcd00 3px;
+}
+
+.gold {
+    color: #ffcd00;
+}
+
+.platinum .tr-trophy{
+    border:solid #3c7877 3px;
+}
+
+.platinum {
+    color: #3c7877;
+}
+
 /*D4RK CSS*/
 body.dark{
     background:#333;
@@ -79,4 +177,21 @@ body.dark table.table{
 
 body.dark table.table tbody tr:hover{
     color:#dedede;
+}
+
+body.dark .base .tr-trophy{
+    border:solid #dedede 3px;
+}
+
+body.dark .base .tr-trophy-image{
+    -webkit-filter: invert(90%);
+    filter: invert(90%);
+}
+
+body.dark .base {
+    color: #dedede;
+}
+
+body.dark .iron {
+    filter: brightness(1.2);
 }

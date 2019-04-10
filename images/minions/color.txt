@@ -1,0 +1,7 @@
+Gold : ffcd00
+Silver : CECECE
+Bronze : cd7f32
+Plat : 3c7877
+Diams : 4D8CBC
+Iron : 65584e
+Wood : 966f33
