@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 04 avr. 2019 à 17:06
+-- Généré le :  mer. 10 avr. 2019 à 17:33
 -- Version du serveur :  10.1.38-MariaDB
--- Version de PHP :  7.3.2
+-- Version de PHP :  7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -42,7 +42,28 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`LOGIN`, `PASSWORD`, `LOL_ACCOUNT`, `PROFIL`, `INSCRIPTION`, `TPC`) VALUES
-('Traumination', '$2y$12$w1ojIQOUwqXmtO6RQJM0ouSdP6iaEaKkaeee3PQNvPKL0XDOE.VoO', NULL, 4, '2019-04-03', 'd4551-3f20833efb38c70a');
+('Test', '$2y$12$WmZW/G1800BtIcqcqJKr4eFlDYHYCEGUDwxPdTEoOUyzb.eOB3A4y', NULL, 0, '2019-04-08', '532ea-eb95bb342d3ee3d0'),
+('Traumination', '$2y$12$w1ojIQOUwqXmtO6RQJM0ouSdP6iaEaKkaeee3PQNvPKL0XDOE.VoO', 'Traumination', 4, '2019-04-03', 'd4551-3f20833efb38c70a');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `lol_profile`
+--
+
+CREATE TABLE `lol_profile` (
+  `PSEUDO` varchar(100) NOT NULL,
+  `LAST_UPDATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `PENTA` int(11) NOT NULL,
+  `FARM` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `lol_profile`
+--
+
+INSERT INTO `lol_profile` (`PSEUDO`, `LAST_UPDATE`, `PENTA`, `FARM`) VALUES
+('Traumination', '2019-04-10 14:53:00', 0, 47373);
 
 -- --------------------------------------------------------
 
@@ -78,6 +99,12 @@ INSERT INTO `quests` (`ID`, `DESCRIPTION`, `XP`, `EXPIRE`, `VALIDATED`, `HIDDEN`
 ALTER TABLE `account`
   ADD PRIMARY KEY (`LOGIN`),
   ADD UNIQUE KEY `LOL_ACCOUNT` (`LOL_ACCOUNT`);
+
+--
+-- Index pour la table `lol_profile`
+--
+ALTER TABLE `lol_profile`
+  ADD PRIMARY KEY (`PSEUDO`);
 
 --
 -- Index pour la table `quests`
