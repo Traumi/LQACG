@@ -72,6 +72,7 @@
     var_dump($lol_profil);
 
     //Affichage des trophées
+    echo '';
 
 
 
