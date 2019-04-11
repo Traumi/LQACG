@@ -9,6 +9,7 @@
         //Imports :
         require_once("object/account.php");
         require_once("object/site.php");
+        require_once("object/utils.php");
 
         require_once("view/header.php");
         require_once("view/trophies_view.php");

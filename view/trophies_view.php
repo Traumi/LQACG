@@ -67,8 +67,11 @@
         
                 foreach($match['participants'] as $values){
                     if($id == $values["participantId"]){
+                        $lol_profil['QUADRA'] += $values['stats']['quadraKills'];
                         $lol_profil['PENTA'] += $values['stats']['pentaKills'];
                         $lol_profil['FARM'] += ($values['stats']['totalMinionsKilled'] + $values['stats']['neutralMinionsKilled']);
+                        $lol_profil['TOWER'] += $values['stats']['turretKills'];
+                        $lol_profil['INHIB'] += $values['stats']['inhibitorKills'];
                     }
                 }
             }
@@ -85,57 +88,135 @@
 
     //Affichage des trophées
     $levels_values = json_decode(file_get_contents("./data/static/levels.json"),true);
-    //var_dump($levels_values);
-    for($i = 0 ; $i < 6 ; ++$i){
-        if($levels_values["farm"][$i] > $lol_profil['FARM']){
-            $i -= 1;
-            break;
-        }
-        
-    }
-    ($i != -1) ? $level_value = $levels_values["farm"][$i] : $level_value = 0;
-    switch($i){
-        case 0 :
-            $level="wood";
-            $nlvl = "Bois";
-            break;
-        case 1 :
-            $level="iron";
-            $nlvl = "Fer";
-            break;
-        case 2 :
-            $level="bronze";
-            $nlvl = "Bronze";
-            break;
-        case 3 :
-            $level="silver";
-            $nlvl = "Argent";
-            break;
-        case 4 :
-            $level="gold";
-            $nlvl = "Or";
-            break;
-        case 5 :
-            $level="platinum";
-            $nlvl = "Platine";
-            break;
-        default :
-            $level="base";
-            $nlvl = "/";
-            break;
-    }
+    
     ?>
 
     <div class="row">
+        <!-- FARM -->
+        <?php 
+            for($i = 0 ; $i < 6 ; ++$i){
+                if($levels_values["farm"][$i] > $lol_profil['FARM']){
+                    $i -= 1;
+                    break;
+                }
+                
+            }
+            ($i != -1) ? $level_value = $levels_values["farm"][$i] : $level_value = 0;
+            $level=getTrophyLevel($i);
+            $nlvl=getTrophyLevelName($i);
+            if($i >= 0){
+        ?>
         <div class="col-2  <?php echo $level; ?>">
-            <div class="tr-trophy">
-                <img class="tr-trophy-image" src="./images/minions/<?php echo $level; ?>.png"/>
-                <div class="tr-trophy-value"><?php echo $level_value; ?></div>
-                <div class="tr-trophy-act-value"><?php echo $lol_profil['FARM'] ?></div> 
-            </div>
-            <div style="font-weight:500;text-align:center;font-size:30px;">Farm : <?php echo $nlvl ?></div>
-            <div style="font-weight:500;text-align:center;font-size:15px;">Prochain niveau : <?php echo $levels_values["farm"][$i+1] ?></div>
+            <svg viewbox="0 0 1000 1000" style="width:100%;">
+                <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
+                <image xlink:href="./images/minions/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> 
+                <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
+                <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['FARM']; ?></text>
+                <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Farm : <?php echo $nlvl ?></text>
+                <text x="500" y="990" text-anchor="middle" font-weight="600" font-size="60">Prochain niveau : <?php echo $levels_values["farm"][$i+1] ?></text>
+            </svg>
         </div>
+        <?php } ?>
+        <!-- TOWER -->
+        <?php 
+            for($i = 0 ; $i < 6 ; ++$i){
+                if($levels_values["tower"][$i] > $lol_profil['TOWER']){
+                    $i -= 1;
+                    break;
+                }
+                
+            }
+            ($i != -1) ? $level_value = $levels_values["tower"][$i] : $level_value = 0;
+            $level=getTrophyLevel($i);
+            $nlvl=getTrophyLevelName($i);
+            if($i >= 0){
+        ?>
+        <div class="col-2  <?php echo $level; ?>">
+            <svg viewbox="0 0 1000 1000" style="width:100%;">
+                <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
+                <image xlink:href="./images/minions/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> 
+                <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
+                <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['TOWER']; ?></text>
+                <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Tower : <?php echo $nlvl ?></text>
+                <text x="500" y="990" text-anchor="middle" font-weight="600" font-size="60">Prochain niveau : <?php echo $levels_values["tower"][$i+1] ?></text>
+            </svg>
+        </div>
+        <?php } ?>
+        <!-- INHIB -->
+        <?php 
+            for($i = 0 ; $i < 6 ; ++$i){
+                if($levels_values["inhib"][$i] > $lol_profil['INHIB']){
+                    $i -= 1;
+                    break;
+                }
+                
+            }
+            ($i != -1) ? $level_value = $levels_values["inhib"][$i] : $level_value = 0;
+            $level=getTrophyLevel($i);
+            $nlvl=getTrophyLevelName($i);
+            if($i >= 0){
+        ?>
+        <div class="col-2  <?php echo $level; ?>">
+            <svg viewbox="0 0 1000 1000" style="width:100%;">
+                <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
+                <image xlink:href="./images/minions/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> 
+                <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
+                <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['INHIB']; ?></text>
+                <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Inhibitors : <?php echo $nlvl ?></text>
+                <text x="500" y="990" text-anchor="middle" font-weight="600" font-size="60">Prochain niveau : <?php echo $levels_values["inhib"][$i+1] ?></text>
+            </svg>
+        </div>
+        <?php } ?>
+        <!-- PENTA -->
+        <?php 
+            for($i = 0 ; $i < 6 ; ++$i){
+                if($levels_values["penta"][$i] > $lol_profil['PENTA']){
+                    $i -= 1;
+                    break;
+                }
+                
+            }
+            ($i != -1) ? $level_value = $levels_values["penta"][$i] : $level_value = 0;
+            $level=getTrophyLevel($i);
+            $nlvl=getTrophyLevelName($i);
+            if($i >= 0){
+        ?>
+        <div class="col-2  <?php echo $level; ?>">
+            <svg viewbox="0 0 1000 1000" style="width:100%;">
+                <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
+                <image xlink:href="./images/penta/<?php echo $level; ?>.png" x="100" y="50" height="500" width="800" /> 
+                <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
+                <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['PENTA']; ?></text>
+                <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Penta : <?php echo $nlvl ?></text>
+                <text x="500" y="990" text-anchor="middle" font-weight="600" font-size="60">Prochain niveau : <?php echo $levels_values["penta"][$i+1] ?></text>
+            </svg>
+        </div>
+        <?php } ?>
+        <!-- QUADRA -->
+        <?php 
+            for($i = 0 ; $i < 6 ; ++$i){
+                if($levels_values["quadra"][$i] > $lol_profil['QUADRA']){
+                    $i -= 1;
+                    break;
+                }
+                
+            }
+            ($i != -1) ? $level_value = $levels_values["quadra"][$i] : $level_value = 0;
+            $level=getTrophyLevel($i);
+            $nlvl=getTrophyLevelName($i);
+            if($i >= 0){
+        ?>
+        <div class="col-2  <?php echo $level; ?>">
+            <svg viewbox="0 0 1000 1000" style="width:100%;">
+                <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
+                <image xlink:href="./images/quadra/<?php echo $level; ?>.png" x="100" y="0" height="650" width="800" /> 
+                <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
+                <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['QUADRA']; ?></text>
+                <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Quadra : <?php echo $nlvl ?></text>
+                <text x="500" y="990" text-anchor="middle" font-weight="600" font-size="60">Prochain niveau : <?php echo $levels_values["quadra"][$i+1] ?></text>
+            </svg>
+        </div>
+        <?php } ?>
     </div>
 
     <?php

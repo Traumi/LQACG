@@ -79,12 +79,28 @@ footer > .night{
     color: #966f33;
 }
 
+.wood circle {
+    stroke: #966f33;
+}
+
+.wood text {
+    fill: #966f33;
+}
+
 .iron .tr-trophy{
     border:solid #65584e 3px;
 }
 
 .iron {
     color: #65584e;
+}
+
+.iron circle {
+    stroke: #65584e;
+}
+
+.iron text {
+    fill: #65584e;
 }
 
 .bronze .tr-trophy{
@@ -95,12 +111,28 @@ footer > .night{
     color: #cd7f32;
 }
 
+.bronze circle {
+    stroke: #cd7f32;
+}
+
+.bronze text {
+    fill: #cd7f32;
+}
+
 .silver .tr-trophy{
     border:solid #CECECE 3px;
 }
 
 .silver {
     color: #CECECE;
+}
+
+.silver circle {
+    stroke: #CECECE;
+}
+
+.silver text {
+    fill: #CECECE;
 }
 
 .gold .tr-trophy{
@@ -111,12 +143,28 @@ footer > .night{
     color: #ffcd00;
 }
 
+.gold circle {
+    stroke: #ffcd00;
+}
+
+.gold text {
+    fill: #ffcd00;
+}
+
 .platinum .tr-trophy{
     border:solid #3c7877 3px;
 }
 
 .platinum {
     color: #3c7877;
+}
+
+.platinum circle {
+    stroke: #3c7877;
+}
+
+.platinum text {
+    fill: #3c7877;
 }
 
 /*D4RK CSS*/

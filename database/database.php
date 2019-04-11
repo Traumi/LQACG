@@ -95,9 +95,20 @@
         }
 
         public function update_lol_account($profil){
-            $sql = 'UPDATE lol_profile SET LAST_UPDATE = CURRENT_TIMESTAMP, FARM = :farm, PENTA = :penta WHERE PSEUDO = :pseudo';
+            //Time_stamp
+            $sql = 'UPDATE lol_profile SET LAST_UPDATE = CURRENT_TIMESTAMP WHERE PSEUDO = :pseudo';
             $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-            $sth->execute(array(':pseudo' => $profil['PSEUDO'], ':farm' => $profil['FARM'], ':penta' => $profil['PENTA']));
+            $sth->execute(array(':pseudo' => $profil['PSEUDO']));
+
+            //Multikills
+            $sql = 'UPDATE lol_profile SET QUADRA = :quadra, PENTA = :penta WHERE PSEUDO = :pseudo';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':pseudo' => $profil['PSEUDO'], ':quadra' => $profil['QUADRA'], ':penta' => $profil['PENTA']));
+
+            //Farm
+            $sql = 'UPDATE lol_profile SET FARM = :farm, TOWER = :tower, INHIB = :inhib WHERE PSEUDO = :pseudo';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':farm' => $profil['FARM'], ':tower' => $profil['TOWER'], ':inhib' => $profil['INHIB'], ':pseudo' => $profil['PSEUDO']));
         }
 
     }
