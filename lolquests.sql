@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 10 avr. 2019 à 17:33
+-- Généré le :  jeu. 11 avr. 2019 à 17:05
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.3
 
@@ -55,15 +55,23 @@ CREATE TABLE `lol_profile` (
   `PSEUDO` varchar(100) NOT NULL,
   `LAST_UPDATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `PENTA` int(11) NOT NULL,
-  `FARM` int(11) NOT NULL
+  `FARM` int(11) NOT NULL,
+  `QUADRA` int(11) NOT NULL,
+  `TRIPLE_KILL` int(11) NOT NULL,
+  `DOUBLE_KILL` int(11) NOT NULL,
+  `SIMPLE_KILL` int(11) NOT NULL,
+  `DEATH` int(11) NOT NULL,
+  `ASSIST` int(11) NOT NULL,
+  `TOWER` int(11) NOT NULL,
+  `INHIB` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `lol_profile`
 --
 
-INSERT INTO `lol_profile` (`PSEUDO`, `LAST_UPDATE`, `PENTA`, `FARM`) VALUES
-('Traumination', '2019-04-10 14:53:00', 0, 47373);
+INSERT INTO `lol_profile` (`PSEUDO`, `LAST_UPDATE`, `PENTA`, `FARM`, `QUADRA`, `TRIPLE_KILL`, `DOUBLE_KILL`, `SIMPLE_KILL`, `DEATH`, `ASSIST`, `TOWER`, `INHIB`) VALUES
+('Traumination', '2019-04-11 15:00:21', 0, 47373, 2, 26, 218, 2582, 2543, 5088, 389, 73);
 
 -- --------------------------------------------------------
 
