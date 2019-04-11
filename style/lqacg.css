@@ -167,6 +167,17 @@ footer > .night{
     fill: #3c7877;
 }
 
+.trophy{
+    margin-bottom:10px;
+}
+
+.trophy-table{
+    border:solid black 3px;
+    border-radius: 15px;
+    padding:20px 0;
+    margin-bottom: 20px;
+}
+
 /*D4RK CSS*/
 body.dark{
     background:#333;
@@ -242,4 +253,16 @@ body.dark .base {
 
 body.dark .iron {
     filter: brightness(1.2);
+}
+
+body.dark .iron circle {
+    stroke: #6d625a;
+}
+
+body.dark .iron text {
+    fill: #6d625a;
+}
+
+body.dark .trophy-table{
+    border:solid #b5b5b5 2px;
 }

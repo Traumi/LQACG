@@ -1,4 +1,4 @@
-<header style="margin-bottom:60px;">
+<header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="accueil.php">LQACG</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,3 +31,4 @@
         </div>
     </nav>
 </header>
+<div style="height:60px;"></div>

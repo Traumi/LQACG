@@ -101,9 +101,14 @@
             $sth->execute(array(':pseudo' => $profil['PSEUDO']));
 
             //Multikills
-            $sql = 'UPDATE lol_profile SET QUADRA = :quadra, PENTA = :penta WHERE PSEUDO = :pseudo';
+            $sql = 'UPDATE lol_profile SET DOUBLE_KILL = :dk, TRIPLE_KILL = :tk, QUADRA = :quadra, PENTA = :penta WHERE PSEUDO = :pseudo';
             $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-            $sth->execute(array(':pseudo' => $profil['PSEUDO'], ':quadra' => $profil['QUADRA'], ':penta' => $profil['PENTA']));
+            $sth->execute(array(':pseudo' => $profil['PSEUDO'], ':quadra' => $profil['QUADRA'], ':penta' => $profil['PENTA'], ':tk' => $profil['TRIPLE_KILL'], ':dk' => $profil['DOUBLE_KILL']));
+
+            //KDA
+            $sql = 'UPDATE lol_profile SET SIMPLE_KILL = :kills, DEATH = :deaths, ASSIST = :assists WHERE PSEUDO = :pseudo';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':pseudo' => $profil['PSEUDO'], ':kills' => $profil['SIMPLE_KILL'], ':deaths' => $profil['DEATH'], ':assists' => $profil['ASSIST']));
 
             //Farm
             $sql = 'UPDATE lol_profile SET FARM = :farm, TOWER = :tower, INHIB = :inhib WHERE PSEUDO = :pseudo';
