@@ -55,7 +55,7 @@
     }
 
     function display_stars($i){
-        if($i >= 1){
+        if($i >= 1 && $i < 5){
             echo '
             <g transform="translate(450,410)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="94" viewbox="0 0 260 245">
@@ -98,6 +98,14 @@
             </g>
             <g transform="translate(700,190)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="94" viewbox="0 0 260 245">
+                    <path d="m55,237 74-228 74,228L9,96h240"/>
+                </svg>
+            </g>';
+        }
+        if($i >= 5){
+            echo '
+            <g transform="translate(420,375)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="160" height="150" viewbox="0 0 260 245">
                     <path d="m55,237 74-228 74,228L9,96h240"/>
                 </svg>
             </g>';

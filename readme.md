@@ -29,6 +29,6 @@ LoL Quest And Challenges Generator
 | Version |    Date   |                       Content                         |
 |:-------:|:---------:|:-----------------------------------------------------:|
 |?        |SUSPENDED  |Link between data and quests.                          |
-|0.3      |IN PROGRESS|Trophies.                                              |
+|0.3      |12/04/2019 |Trophies.                                              |
 |0.2      |09/04/2019 |Quests display, API use & first values.                |
 |0.1      |08/04/2019 |Project initialization, basical functionnalities added.|
