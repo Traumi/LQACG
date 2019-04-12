@@ -114,6 +114,12 @@
             $sql = 'UPDATE lol_profile SET FARM = :farm, TOWER = :tower, INHIB = :inhib WHERE PSEUDO = :pseudo';
             $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute(array(':farm' => $profil['FARM'], ':tower' => $profil['TOWER'], ':inhib' => $profil['INHIB'], ':pseudo' => $profil['PSEUDO']));
+
+            //Role
+            $sql = 'UPDATE lol_profile SET TANK = :tank, MAGE = :mage, SUPPORT = :support, FIGHTER = :fighter, ASSASSIN = :assassin, MARKSMAN = :marksman WHERE PSEUDO = :pseudo';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':tank' => $profil['TANK'], ':mage' => $profil['MAGE'], ':support' => $profil['SUPPORT'], ':fighter' => $profil['FIGHTER'], ':assassin' => $profil['ASSASSIN'], ':marksman' => $profil['MARKSMAN'], ':pseudo' => $profil['PSEUDO']));
+
         }
 
     }

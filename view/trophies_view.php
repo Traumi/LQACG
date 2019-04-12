@@ -1,6 +1,8 @@
 <?php
     $site = new Site();
 
+    $champions = json_decode(file_get_contents("./ddragon/9.6.1/data/fr_FR/championFull.json"),true);
+
     isset($_SESSION["login"]) ? $login = $_SESSION["login"] : header("Location: index.php");
     $acc = new Account($login);
     
@@ -78,6 +80,34 @@
                         $lol_profil['FARM'] += ($values['stats']['totalMinionsKilled'] + $values['stats']['neutralMinionsKilled']);
                         $lol_profil['TOWER'] += $values['stats']['turretKills'];
                         $lol_profil['INHIB'] += $values['stats']['inhibitorKills'];
+
+                        foreach($champions['data'] as $champ){
+                            if($champ['key'] == $values['championId']){
+                                foreach($champ['tags'] as $tag){
+                                    switch($tag){
+                                        case "Mage" :
+                                            $lol_profil['MAGE'] += 1;
+                                            break;
+                                        case "Tank" :
+                                            $lol_profil['TANK'] += 1;
+                                            break;
+                                        case "Fighter" :
+                                            $lol_profil['FIGHTER'] += 1;
+                                            break;
+                                        case "Support" :
+                                            $lol_profil['SUPPORT'] += 1;
+                                            break;
+                                        case "Assassin" :
+                                            $lol_profil['ASSASSIN'] += 1;
+                                            break;
+                                        case "Marksman" :
+                                            $lol_profil['MARKSMAN'] += 1;
+                                            break;
+                                    }
+                                }
+                                break;
+                            } 
+                        }
                     }
                 }
             }
@@ -114,6 +144,12 @@
             <h5 class="text-center">KDA</h5>
             <div class="row trophy-table">
                 <?php require_once("./view/trophies/trophy_kda.php") ?>
+            </div>
+        </div>
+        <div class="col-12">
+            <h5 class="text-center">Roles</h5>
+            <div class="row trophy-table">
+                <?php require_once("./view/trophies/trophy_role.php") ?>
             </div>
         </div>
     </div>
