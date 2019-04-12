@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 11 avr. 2019 à 17:05
+-- Généré le :  ven. 12 avr. 2019 à 17:23
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.3
 
@@ -63,15 +63,21 @@ CREATE TABLE `lol_profile` (
   `DEATH` int(11) NOT NULL,
   `ASSIST` int(11) NOT NULL,
   `TOWER` int(11) NOT NULL,
-  `INHIB` int(11) NOT NULL
+  `INHIB` int(11) NOT NULL,
+  `TANK` int(11) NOT NULL,
+  `SUPPORT` int(11) NOT NULL,
+  `MARKSMAN` int(11) NOT NULL,
+  `MAGE` int(11) NOT NULL,
+  `FIGHTER` int(11) NOT NULL,
+  `ASSASSIN` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `lol_profile`
 --
 
-INSERT INTO `lol_profile` (`PSEUDO`, `LAST_UPDATE`, `PENTA`, `FARM`, `QUADRA`, `TRIPLE_KILL`, `DOUBLE_KILL`, `SIMPLE_KILL`, `DEATH`, `ASSIST`, `TOWER`, `INHIB`) VALUES
-('Traumination', '2019-04-11 15:00:21', 0, 47373, 2, 26, 218, 2582, 2543, 5088, 389, 73);
+INSERT INTO `lol_profile` (`PSEUDO`, `LAST_UPDATE`, `PENTA`, `FARM`, `QUADRA`, `TRIPLE_KILL`, `DOUBLE_KILL`, `SIMPLE_KILL`, `DEATH`, `ASSIST`, `TOWER`, `INHIB`, `TANK`, `SUPPORT`, `MARKSMAN`, `MAGE`, `FIGHTER`, `ASSASSIN`) VALUES
+('Traumination', '2019-04-12 15:23:00', 0, 47780, 2, 26, 219, 2598, 2553, 5106, 392, 74, 209, 125, 117, 213, 262, 34);
 
 -- --------------------------------------------------------
 
