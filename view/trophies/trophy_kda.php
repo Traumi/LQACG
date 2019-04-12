@@ -1,12 +1,12 @@
 <!-- KILLS -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["kill"][$i] > $lol_profil['SIMPLE_KILL']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["kill"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -26,13 +26,13 @@
 <?php } ?>
 <!-- DEATH -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["death"][$i] > $lol_profil['DEATH']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["death"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -52,13 +52,13 @@
 <?php } ?>
 <!-- ASSISTS -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["assist"][$i] > $lol_profil['ASSIST']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["assist"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -86,14 +86,14 @@
     }
 
     $kda = number_format((float)$kda, 2, '.', '');
-
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["kda"][$i] > $kda){
             $i -= 1;
             break;
         }
         
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["kda"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);

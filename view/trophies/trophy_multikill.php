@@ -1,12 +1,12 @@
 <!-- PENTA -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["penta"][$i] > $lol_profil['PENTA']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["penta"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -26,13 +26,13 @@
 <?php } ?>
 <!-- QUADRA -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["quadra"][$i] > $lol_profil['QUADRA']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["quadra"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -52,13 +52,13 @@
 <?php } ?>
 <!-- TRIPLE -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["triple"][$i] > $lol_profil['TRIPLE_KILL']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["triple"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -78,13 +78,13 @@
 <?php } ?>
 <!-- DOUBLE -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["double"][$i] > $lol_profil['DOUBLE_KILL']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["double"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);

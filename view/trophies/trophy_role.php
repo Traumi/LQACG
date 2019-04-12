@@ -1,12 +1,12 @@
 <!-- ASSASSIN -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["role"][$i] > $lol_profil['ASSASSIN']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["role"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -16,7 +16,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/tmp/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> -->
-        <image xlink:href="./images/tmp/assassin.png" x="100" y="70" height="250" width="800" />
+        <image xlink:href="./images/roles/assassin/<?php echo $level; ?>.png" x="100" y="70" height="250" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['ASSASSIN']; ?></text>
@@ -27,13 +27,13 @@
 <?php } ?>
 <!-- FIGHTER -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["role"][$i] > $lol_profil['FIGHTER']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["role"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -43,7 +43,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/tmp/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> -->
-        <image xlink:href="./images/tmp/fighter.png" x="100" y="70" height="250" width="800" />
+        <image xlink:href="./images/roles/fighter/<?php echo $level; ?>.png" x="100" y="70" height="250" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['FIGHTER']; ?></text>
@@ -54,13 +54,13 @@
 <?php } ?>
 <!-- MAGE -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["role"][$i] > $lol_profil['MAGE']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["role"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -70,7 +70,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/tmp/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> -->
-        <image xlink:href="./images/tmp/mage.png" x="100" y="70" height="250" width="800" />
+        <image xlink:href="./images/roles/mage/<?php echo $level; ?>.png" x="100" y="70" height="250" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['MAGE']; ?></text>
@@ -81,13 +81,13 @@
 <?php } ?>
 <!-- MARKSMAN -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["role"][$i] > $lol_profil['MARKSMAN']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["role"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -97,7 +97,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/tmp/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> -->
-        <image xlink:href="./images/tmp/marksman.png" x="100" y="70" height="250" width="800" />
+        <image xlink:href="./images/roles/marksman/<?php echo $level; ?>.png" x="100" y="70" height="250" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['MARKSMAN']; ?></text>
@@ -108,13 +108,13 @@
 <?php } ?>
 <!-- SUPPORT -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["role"][$i] > $lol_profil['SUPPORT']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["role"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -124,7 +124,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/tmp/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> -->
-        <image xlink:href="./images/tmp/support.png" x="100" y="70" height="250" width="800" />
+        <image xlink:href="./images/roles/support/<?php echo $level; ?>.png" x="100" y="70" height="250" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['SUPPORT']; ?></text>
@@ -135,13 +135,13 @@
 <?php } ?>
 <!-- TANK -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["role"][$i] > $lol_profil['TANK']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["role"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -151,7 +151,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/tmp/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> -->
-        <image xlink:href="./images/tmp/tank.png" x="100" y="70" height="250" width="800" />
+        <image xlink:href="./images/roles/tank/<?php echo $level; ?>.png" x="100" y="70" height="250" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['TANK']; ?></text>

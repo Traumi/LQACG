@@ -1,12 +1,12 @@
 <!-- FARM -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["farm"][$i] > $lol_profil['FARM']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["farm"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -26,13 +26,13 @@
 <?php } ?>
 <!-- TOWER -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["tower"][$i] > $lol_profil['TOWER']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["tower"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
@@ -52,13 +52,13 @@
 <?php } ?>
 <!-- INHIB -->
 <?php 
-    for($i = 0 ; $i < 5 ; ++$i){
+    for($i = 0 ; $i < $level_max ; ++$i){
         if($levels_values["inhib"][$i] > $lol_profil['INHIB']){
             $i -= 1;
             break;
         }
-        
     }
+    ($i == $level_max) ? $i = $level_max-1 : null;
     ($i != -1) ? $level_value = $levels_values["inhib"][$i] : $level_value = 0;
     $level=getTrophyLevel($i);
     $nlvl=getTrophyLevelName($i);
