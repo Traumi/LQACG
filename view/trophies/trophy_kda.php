@@ -1,6 +1,6 @@
 <!-- KILLS -->
 <?php 
-    for($i = 0 ; $i < 6 ; ++$i){
+    for($i = 0 ; $i < 5 ; ++$i){
         if($levels_values["kill"][$i] > $lol_profil['SIMPLE_KILL']){
             $i -= 1;
             break;
@@ -16,6 +16,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/kill/<?php echo $level; ?>.png" x="100" y="0" height="650" width="800" /> -->
+        <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['SIMPLE_KILL']; ?></text>
         <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Kills : <?php echo $nlvl ?></text>
@@ -25,7 +26,7 @@
 <?php } ?>
 <!-- DEATH -->
 <?php 
-    for($i = 0 ; $i < 6 ; ++$i){
+    for($i = 0 ; $i < 5 ; ++$i){
         if($levels_values["death"][$i] > $lol_profil['DEATH']){
             $i -= 1;
             break;
@@ -41,6 +42,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/death/<?php echo $level; ?>.png" x="100" y="0" height="650" width="800" /> -->
+        <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['DEATH']; ?></text>
         <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Morts : <?php echo $nlvl ?></text>
@@ -50,7 +52,7 @@
 <?php } ?>
 <!-- ASSISTS -->
 <?php 
-    for($i = 0 ; $i < 6 ; ++$i){
+    for($i = 0 ; $i < 5 ; ++$i){
         if($levels_values["assist"][$i] > $lol_profil['ASSIST']){
             $i -= 1;
             break;
@@ -66,6 +68,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/assist/<?php echo $level; ?>.png" x="100" y="0" height="650" width="800" /> -->
+        <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['ASSIST']; ?></text>
         <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Assists : <?php echo $nlvl ?></text>
@@ -84,7 +87,7 @@
 
     $kda = number_format((float)$kda, 2, '.', '');
 
-    for($i = 0 ; $i < 6 ; ++$i){
+    for($i = 0 ; $i < 5 ; ++$i){
         if($levels_values["kda"][$i] > $kda){
             $i -= 1;
             break;
@@ -100,6 +103,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/kda/<?php echo $level; ?>.png" x="100" y="0" height="650" width="800" /> -->
+        <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $kda; ?></text>
         <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">KDA : <?php echo $nlvl ?></text>

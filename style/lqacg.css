@@ -71,14 +71,6 @@ footer > .night{
     font-weight:500;
 }
 
-.wood .tr-trophy{
-    border:solid #966f33 3px;
-}
-
-.wood {
-    color: #966f33;
-}
-
 .wood circle {
     stroke: #966f33;
 }
@@ -87,12 +79,8 @@ footer > .night{
     fill: #966f33;
 }
 
-.iron .tr-trophy{
-    border:solid #65584e 3px;
-}
-
-.iron {
-    color: #65584e;
+.wood path {
+    fill: #966f33;
 }
 
 .iron circle {
@@ -103,12 +91,8 @@ footer > .night{
     fill: #65584e;
 }
 
-.bronze .tr-trophy{
-    border:solid #cd7f32 3px;
-}
-
-.bronze {
-    color: #cd7f32;
+.iron path {
+    fill: #65584e;
 }
 
 .bronze circle {
@@ -119,12 +103,8 @@ footer > .night{
     fill: #cd7f32;
 }
 
-.silver .tr-trophy{
-    border:solid #CECECE 3px;
-}
-
-.silver {
-    color: #CECECE;
+.bronze path {
+    fill: #cd7f32;
 }
 
 .silver circle {
@@ -135,12 +115,8 @@ footer > .night{
     fill: #CECECE;
 }
 
-.gold .tr-trophy{
-    border:solid #ffcd00 3px;
-}
-
-.gold {
-    color: #ffcd00;
+.silver path {
+    fill: #CECECE;
 }
 
 .gold circle {
@@ -151,12 +127,8 @@ footer > .night{
     fill: #ffcd00;
 }
 
-.platinum .tr-trophy{
-    border:solid #3c7877 3px;
-}
-
-.platinum {
-    color: #3c7877;
+.gold path {
+    fill: #ffcd00;
 }
 
 .platinum circle {
@@ -164,6 +136,10 @@ footer > .night{
 }
 
 .platinum text {
+    fill: #3c7877;
+}
+
+.platinum path {
     fill: #3c7877;
 }
 
@@ -260,6 +236,10 @@ body.dark .iron circle {
 }
 
 body.dark .iron text {
+    fill: #6d625a;
+}
+
+body.dark .iron path {
     fill: #6d625a;
 }
 

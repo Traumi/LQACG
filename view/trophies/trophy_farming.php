@@ -1,6 +1,6 @@
 <!-- FARM -->
 <?php 
-    for($i = 0 ; $i < 6 ; ++$i){
+    for($i = 0 ; $i < 5 ; ++$i){
         if($levels_values["farm"][$i] > $lol_profil['FARM']){
             $i -= 1;
             break;
@@ -15,7 +15,8 @@
 <div class="col-2 trophy <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
-        <image xlink:href="./images/minions/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> 
+        <image xlink:href="./images/minions/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" /> 
+        <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['FARM']; ?></text>
         <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Farm : <?php echo $nlvl ?></text>
@@ -25,7 +26,7 @@
 <?php } ?>
 <!-- TOWER -->
 <?php 
-    for($i = 0 ; $i < 6 ; ++$i){
+    for($i = 0 ; $i < 5 ; ++$i){
         if($levels_values["tower"][$i] > $lol_profil['TOWER']){
             $i -= 1;
             break;
@@ -40,7 +41,8 @@
 <div class="col-2  <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
-        <image xlink:href="./images/tower/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" />
+        <image xlink:href="./images/tower/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" />
+        <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['TOWER']; ?></text>
         <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Tower : <?php echo $nlvl ?></text>
@@ -50,7 +52,7 @@
 <?php } ?>
 <!-- INHIB -->
 <?php 
-    for($i = 0 ; $i < 6 ; ++$i){
+    for($i = 0 ; $i < 5 ; ++$i){
         if($levels_values["inhib"][$i] > $lol_profil['INHIB']){
             $i -= 1;
             break;
@@ -66,6 +68,7 @@
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/minions/<?php echo $level; ?>.png" x="100" y="50" height="450" width="800" /> -->
+        <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['INHIB']; ?></text>
         <text x="500" y="900" text-anchor="middle" font-weight="600" font-size="100">Inhibitors : <?php echo $nlvl ?></text>
