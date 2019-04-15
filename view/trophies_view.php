@@ -1,7 +1,7 @@
 <?php
     $site = new Site();
 
-    $champions = json_decode(file_get_contents("./ddragon/9.6.1/data/fr_FR/championFull.json"),true);
+    $champions = json_decode(file_get_contents("./ddragon/9.7.1/data/fr_FR/championFull.json"),true);
 
     isset($_SESSION["login"]) ? $login = $_SESSION["login"] : header("Location: index.php");
     $acc = new Account($login);

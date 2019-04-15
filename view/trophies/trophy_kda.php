@@ -78,7 +78,10 @@
 <?php } ?>
 <!-- KDA -->
 <?php 
-    if($lol_profil['DEATH'] == 0){
+    if($lol_profil['SIMPLE_KILL'] == 0 && $lol_profil['ASSIST'] == 0){
+        $kda = 0;
+    }
+    else if($lol_profil['DEATH'] == 0){
         $kda = ($lol_profil['SIMPLE_KILL']+$lol_profil['ASSIST'])/1;
         if($kda < $levels_values["kda"][5]) $kda = $levels_values["kda"][5];
     }else{

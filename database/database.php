@@ -82,7 +82,7 @@
             $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute(array(':login' => $login, ':tpc' => $tpc, ':pseudo' => $pseudo));
 
-            $sql = 'INSERT INTO lol_profil(PSEUDO) VALUES (:pseudo)';
+            $sql = 'INSERT INTO lol_profile(PSEUDO) VALUES (:pseudo)';
             $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute(array(':pseudo' => $pseudo));
         }
