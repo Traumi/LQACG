@@ -157,6 +157,18 @@
     <div class="row" style="width:90%;margin:auto;">
         <div class="col-12"><h3 class="text-center">In Game</h3></div>
         <div class="col-12">
+            <h5 class="text-center">Match history</h5>
+            <div class="row trophy-table">
+                <?php require_once("./view/trophies/trophy_history.php") ?>
+            </div>
+        </div>
+        <div class="col-12">
+            <h5 class="text-center">KDA</h5>
+            <div class="row trophy-table">
+                <?php require_once("./view/trophies/trophy_kda.php") ?>
+            </div>
+        </div>
+        <div class="col-12">
             <h5 class="text-center">Farming</h5>
             <div class="row trophy-table">
                 <?php require_once("./view/trophies/trophy_farming.php") ?>
@@ -166,12 +178,6 @@
             <h5 class="text-center">Multikill</h5>
             <div class="row trophy-table">
                 <?php require_once("./view/trophies/trophy_multikill.php") ?>
-            </div>
-        </div>
-        <div class="col-12">
-            <h5 class="text-center">KDA</h5>
-            <div class="row trophy-table">
-                <?php require_once("./view/trophies/trophy_kda.php") ?>
             </div>
         </div>
         <div class="col-12">
