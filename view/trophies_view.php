@@ -169,9 +169,9 @@
             </div>
         </div>
         <div class="col-12">
-            <h5 class="text-center">Farming</h5>
+            <h5 class="text-center">Roles</h5>
             <div class="row trophy-table">
-                <?php require_once("./view/trophies/trophy_farming.php") ?>
+                <?php require_once("./view/trophies/trophy_role.php") ?>
             </div>
         </div>
         <div class="col-12">
@@ -181,11 +181,19 @@
             </div>
         </div>
         <div class="col-12">
-            <h5 class="text-center">Roles</h5>
+            <h5 class="text-center">Teamwork</h5>
             <div class="row trophy-table">
-                <?php require_once("./view/trophies/trophy_role.php") ?>
+                <?php require_once("./view/trophies/trophy_teamwork.php") ?>
             </div>
         </div>
+        <div class="col-12">
+            <h5 class="text-center">Farming</h5>
+            <div class="row trophy-table">
+                <?php require_once("./view/trophies/trophy_farming.php") ?>
+            </div>
+        </div>
+        
+        
 
         <!--
             UPDATE lol_profile 
