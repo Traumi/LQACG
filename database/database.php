@@ -120,6 +120,16 @@
             $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
             $sth->execute(array(':tank' => $profil['TANK'], ':mage' => $profil['MAGE'], ':support' => $profil['SUPPORT'], ':fighter' => $profil['FIGHTER'], ':assassin' => $profil['ASSASSIN'], ':marksman' => $profil['MARKSMAN'], ':pseudo' => $profil['PSEUDO']));
 
+            //Histo
+            $sql = 'UPDATE lol_profile SET GAMES = :games, WIN = :win WHERE PSEUDO = :pseudo';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':win' => $profil['WIN'], ':games' => $profil['GAMES'], ':pseudo' => $profil['PSEUDO']));
+
+            //Teamwork
+            $sql = 'UPDATE lol_profile SET T_RiftHerald = :trh, T_Drake = :tdrk, T_Baron = :tbrn, T_Vilemaw = :tvlmw WHERE PSEUDO = :pseudo';
+            $sth = $this->dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array(':trh' => $profil['T_RiftHerald'], ':tdrk' => $profil['T_Drake'], ':tbrn' => $profil['T_Baron'], ':tvlmw' => $profil['T_Vilemaw'], ':pseudo' => $profil['PSEUDO']));
+
         }
 
     }

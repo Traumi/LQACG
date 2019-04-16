@@ -35,10 +35,16 @@
 
     $beginIndex = 100;
     $diff = $now->getTimestamp() - $last_update->getTimestamp();
+
+    $banGames = array(83,800,810,820,830,840,850,1030,1040,1050,1060,1070);
+
     if($diff > 240){
         $continue = true;
         while($continue){
             for($i = 0 ; $i < 100 ; ++$i){
+                if(in_array($matches['matches'][$i]['queue'], $banGames)){
+                    continue;
+                }
                 if(!file_exists("./data/matches/".$matches['matches'][$i]['gameId'].".json")){
                     $request = file_get_contents("https://euw1.api.riotgames.com/lol/match/v4/matches/".$matches['matches'][$i]['gameId']."?api_key=".$site->key);
                     if($request != ""){
@@ -51,6 +57,7 @@
         
                 $request = file_get_contents("./data/matches/".$matches['matches'][$i]['gameId'].".json");
                 $match = json_decode($request, true);
+                
         
                 $date = new DateTime();
                 $date->setTimestamp(floor($match['gameCreation']/1000));
@@ -70,17 +77,39 @@
         
                 foreach($match['participants'] as $values){
                     if($id == $values["participantId"]){
+
+                        //KDA MEANS A LOT
                         $lol_profil['ASSIST'] += $values['stats']['assists'];
                         $lol_profil['DEATH'] += $values['stats']['deaths'];
+
+                        //Multikills
                         $lol_profil['SIMPLE_KILL'] += $values['stats']['kills'];
                         $lol_profil['DOUBLE_KILL'] += $values['stats']['doubleKills'];
                         $lol_profil['TRIPLE_KILL'] += $values['stats']['tripleKills'];
                         $lol_profil['QUADRA'] += $values['stats']['quadraKills'];
                         $lol_profil['PENTA'] += $values['stats']['pentaKills'];
+
+                        //Farm
                         $lol_profil['FARM'] += ($values['stats']['totalMinionsKilled'] + $values['stats']['neutralMinionsKilled']);
                         $lol_profil['TOWER'] += $values['stats']['turretKills'];
                         $lol_profil['INHIB'] += $values['stats']['inhibitorKills'];
 
+                        //History
+                        $lol_profil['GAMES'] += 1;
+                        foreach($match['teams'] as $team){
+                            if($values['teamId'] == $team['teamId']){
+                                if($team['win'] == "Win") $lol_profil['WIN'] += 1;
+                                //Teamwork
+                                $lol_profil['T_RiftHerald'] += $team['riftHeraldKills'];
+                                $lol_profil['T_Drake'] += $team['dragonKills'];
+                                $lol_profil['T_Baron'] += $team['baronKills'];
+                                $lol_profil['T_Vilemaw'] += $team['vilemawKills'];
+                            }
+                        }
+
+                        
+
+                        //Roles
                         foreach($champions['data'] as $champ){
                             if($champ['key'] == $values['championId']){
                                 foreach($champ['tags'] as $tag){
@@ -114,7 +143,6 @@
             $request = file_get_contents("https://euw1.api.riotgames.com/lol/match/v4/matchlists/by-account/".$player['accountId']."?endIndex=".($beginIndex+100)."&beginIndex=".$beginIndex."&api_key=".$site->key);
             $matches = json_decode($request, true);
             $beginIndex += 100;
-            //$continue = false;
         }
         
         $acc->update_lol_profile($lol_profil);
@@ -152,6 +180,14 @@
                 <?php require_once("./view/trophies/trophy_role.php") ?>
             </div>
         </div>
+
+        <!--
+            UPDATE lol_profile 
+            SET `LAST_UPDATE` = '2018-12-01 00:00:00',`PENTA`=0, `FARM`=0, `QUADRA`=0, `TRIPLE_KILL`=0, `DOUBLE_KILL`=0, `SIMPLE_KILL`=0, `DEATH`=0, `ASSIST`=0, 
+            `TOWER`=0, `INHIB`=0, `TANK`=0, `SUPPORT`=0, `MARKSMAN`=0, `MAGE`=0, `FIGHTER`=0, `ASSASSIN`=0, `WIN`=0, `GAMES`=0,
+            `T_RiftHerald`=0, `T_Drake`=0, `T_Baron`=0, `T_Vilemaw`=0
+            WHERE `PSEUDO`='Traumination'
+        -->
     </div>
 
     <?php
