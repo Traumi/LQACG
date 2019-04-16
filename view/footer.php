@@ -1,7 +1,31 @@
 <div style="height:50px;">
 
 </div>
+<!-- CGU -->
+<div class="modal fade" id="cgu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Conditions Générales</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 <footer>
+    <div class="text-center">
+        <a data-toggle="modal" href="" data-target="#cgu">
+            Conditions Générales
+        </a>
+    </div>
     <div class="night">
         <i class="fas fa-sun"></i>
         <div class="form-check checkbox-slider--b" style="display:inline-block;width:40px;">
