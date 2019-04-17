@@ -67,7 +67,7 @@
 <div class="col-2  <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
-        <!--<image xlink:href="./images/baron/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" />-->
+        <image xlink:href="./images/baron/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['T_Baron']; ?></text>
@@ -93,7 +93,7 @@
 <div class="col-2  <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
-        <!--<image xlink:href="./images/vilemaw/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" />-->
+        <image xlink:href="./images/vilemaw/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['T_Vilemaw']; ?></text>
