@@ -92,8 +92,7 @@
             </ul>
         </div>
         <div>
-            <h4>Succès :</h4>
-            KEDAL
+            Accédez à vos succès en cliquant sur votre pseudo (en haut à droite) puis trophées.
         </div>
         <div>
             <h4>Développeur :</h4>

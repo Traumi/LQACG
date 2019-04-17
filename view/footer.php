@@ -6,13 +6,13 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Conditions Générales</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Informations Générales</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        Disponible uniquement pour le serveur EUW pour l'instant
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -23,7 +23,7 @@
 <footer>
     <div class="text-center">
         <a data-toggle="modal" href="" data-target="#cgu">
-            Conditions Générales
+          Informations Générales
         </a>
     </div>
     <div class="night">
