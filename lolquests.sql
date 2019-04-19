@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 12 avr. 2019 à 17:23
+-- Généré le :  ven. 19 avr. 2019 à 17:04
 -- Version du serveur :  10.1.38-MariaDB
 -- Version de PHP :  7.3.3
 
@@ -54,6 +54,8 @@ INSERT INTO `account` (`LOGIN`, `PASSWORD`, `LOL_ACCOUNT`, `PROFIL`, `INSCRIPTIO
 CREATE TABLE `lol_profile` (
   `PSEUDO` varchar(100) NOT NULL,
   `LAST_UPDATE` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `GAMES` int(11) NOT NULL,
+  `WIN` int(11) NOT NULL,
   `PENTA` int(11) NOT NULL,
   `FARM` int(11) NOT NULL,
   `QUADRA` int(11) NOT NULL,
@@ -69,15 +71,19 @@ CREATE TABLE `lol_profile` (
   `MARKSMAN` int(11) NOT NULL,
   `MAGE` int(11) NOT NULL,
   `FIGHTER` int(11) NOT NULL,
-  `ASSASSIN` int(11) NOT NULL
+  `ASSASSIN` int(11) NOT NULL,
+  `T_RiftHerald` int(11) NOT NULL,
+  `T_Drake` int(11) NOT NULL,
+  `T_Baron` int(11) NOT NULL,
+  `T_Vilemaw` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `lol_profile`
 --
 
-INSERT INTO `lol_profile` (`PSEUDO`, `LAST_UPDATE`, `PENTA`, `FARM`, `QUADRA`, `TRIPLE_KILL`, `DOUBLE_KILL`, `SIMPLE_KILL`, `DEATH`, `ASSIST`, `TOWER`, `INHIB`, `TANK`, `SUPPORT`, `MARKSMAN`, `MAGE`, `FIGHTER`, `ASSASSIN`) VALUES
-('Traumination', '2019-04-12 15:23:00', 0, 47780, 2, 26, 219, 2598, 2553, 5106, 392, 74, 209, 125, 117, 213, 262, 34);
+INSERT INTO `lol_profile` (`PSEUDO`, `LAST_UPDATE`, `GAMES`, `WIN`, `PENTA`, `FARM`, `QUADRA`, `TRIPLE_KILL`, `DOUBLE_KILL`, `SIMPLE_KILL`, `DEATH`, `ASSIST`, `TOWER`, `INHIB`, `TANK`, `SUPPORT`, `MARKSMAN`, `MAGE`, `FIGHTER`, `ASSASSIN`, `T_RiftHerald`, `T_Drake`, `T_Baron`, `T_Vilemaw`) VALUES
+('Traumination', '2019-04-19 12:07:04', 499, 269, 0, 47944, 2, 26, 217, 2577, 2553, 5072, 391, 74, 256, 123, 70, 216, 257, 34, 93, 507, 153, 0);
 
 -- --------------------------------------------------------
 
