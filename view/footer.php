@@ -12,7 +12,13 @@
         </button>
       </div>
       <div class="modal-body">
-        Disponible uniquement pour le serveur EUW pour l'instant
+        <h4>V0.3.1</h4>
+        <ul>
+          <li>Retrait des coop vs AI</li>
+          <li>Prospection des multikills</li>
+          <li>Ajout de pleeeein de catégories</li>
+          <li>Ajout d'icones</li>
+        </ul>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -21,9 +27,9 @@
   </div>
 </div>
 <footer>
-    <div class="text-center">
-        <a data-toggle="modal" href="" data-target="#cgu">
-          Informations Générales
+    <div class="text-center" style="margin-top:8px;">
+        <a data-toggle="modal" href="" data-target="#cgu" style="color:white;">
+          Informations de mises à jour
         </a>
     </div>
     <div class="night">
