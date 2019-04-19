@@ -45,7 +45,6 @@
 				text-align: center;
 			}
 			.input-group{
-				display: inline-block;
 				text-align: center;
 				width:33.33333333333333333333333333333333333333333333333%;
 				float: left;
@@ -55,9 +54,20 @@
 				font-weight: 600;
 			}
 			.input-group input, .input-group select{
-				width:95%;
+				width:90%;
 				height:25px;
 				font-size:16px;
+				height: calc(1.5em + .75rem + 2px);
+				padding: .375rem .75rem;
+				font-size: 1rem;
+				font-weight: 400;
+				line-height: 1.5;
+				color: #495057;
+				background-color: #fff;
+				background-clip: padding-box;
+				border: 1px solid #ced4da;
+				border-radius: .25rem;
+				transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 			}
 			.wrapper{
 				clear: both; padding-top: 50px;
@@ -93,7 +103,7 @@
 					<tr>
 						<th onclick="sortby('Elem')" id="t-elem">Element</th>
 						<th onclick="sortby('Value')" id="t-value">Valeur</th>
-						<th onclick="sortby('Value')" id="t-onetoval">1 niv. d'ile</th>
+						<th onclick="sortby('Onetoval')" id="t-onetoval">1 niv. d'ile</th>
 					</tr>
 				</thead>
 				<tbody id="table_content">
@@ -102,23 +112,57 @@
 			</table>
 		</div>
 		<script>
+
+			function getFileSize(url)
+			{
+				var fileSize = '';
+				var http = new XMLHttpRequest();
+				http.open('HEAD', url, true); // true = Asynchronous
+				http.onreadystatechange = function() {
+					if (this.readyState == this.DONE) {
+						if (this.status === 200) {
+							fileSize = this.getResponseHeader('content-length');
+							console.log('fileSize = ' + fileSize);
+							array[4].valeur = fileSize;
+							array[5].valeur = fileSize*8/1024;
+							sorted_array = [...array];
+							buildContent();
+						}
+					}
+				};
+				http.send(); // it will submit request and jump to the next line immediately, without even waiting for request result b/c we used ASYNC XHR call
+				return ('At this moment, we do not even have Request Results b/c we used ASYNC call to follow with stupid JavaScript patterns');
+			}
+
 			var array = [];
 			var sorted_array = [];
-			array[0] = {nom:"PIB du Mozambique",valeur:12330000000};
-			array[1] = {nom:"Leokoko",valeur:0};
-			array[2] = {nom:"Bitcoin",valeur:4663.84};
-			array[3] = {nom:"Octet",valeur:0.1};
-			array[4] = {nom:"Ce fichier",valeur:6.288};
+			array[0] = {id:"pibmozambique",nom:"PIB du Mozambique",valeur:12330000000};
+			array[1] = {id:"leokoko",nom:"Leokoko",valeur:0};
+			array[2] = {id:"btc",nom:"Bitcoin",valeur:4663.84};
+			array[3] = {id:"octet",nom:"Octet",valeur:0.1};
+			array[4] = {id:"fileo",nom:"Ce fichier (Octet)",valeur:0};
+			array[5] = {id:"filekb",nom:"Ce fichier (kb)",valeur:0};
+			array[6] = {id:"ping",nom:"Ping (ms)",valeur:0};
 			sorted_array = [...array];
+			buildContent()
+			getFileSize("./level_converter.html");
 			
-			var table_string = "";
-			var option_string = "";
-			for(let i = 0 ; i < array.length ; ++i){
-				table_string += "<tr><td>"+array[i].nom+"</td><td>"+array[i].valeur+"</td><td>"+(1/array[i].valeur)+"</td></tr>";
-				option_string += '<option value="'+i+'">'+array[i].nom+'</option>';
+			function setPing(val){
+				array[6].valeur = val;
+				document.getElementById("val_ping").innerHTML = array[6].valeur;
+				document.getElementById("onetoval_ping").innerHTML = 1/array[6].valeur;
 			}
-			document.getElementById("table_content").innerHTML = table_string;
-			document.getElementById("converter").innerHTML = option_string;
+
+			function buildContent(){
+				var table_string = "";
+				var option_string = "";
+				for(let i = 0 ; i < array.length ; ++i){
+					table_string += "<tr><td>"+array[i].nom+'</td><td id="val_'+array[i].id+'">'+array[i].valeur+'</td><td id="onetoval_'+array[i].id+'">'+(1/array[i].valeur)+"</td></tr>";
+					option_string += '<option value="'+i+'">'+array[i].nom+'</option>';
+				}
+				document.getElementById("table_content").innerHTML = table_string;
+				document.getElementById("converter").innerHTML = option_string;
+			}
 
 			function convert(){
 				let base_value = document.getElementById("is_level").value;
@@ -162,12 +206,21 @@
 						order = "desc";
 						sorted_array.sort(compareValueDesc);
 					}
+				}else if(sorter == "Onetoval"){
+					if(type != "Onetoval" || (type == "Onetoval" && order == "desc")){
+						type = "Onetoval";
+						order = "asc";
+						sorted_array.sort(compareOnetoval);
+					}else{
+						order = "desc";
+						sorted_array.sort(compareOnetovalDesc);
+					}
 				}
 				display_titles(sorter, order);
 
 				table_string = "";
 				for(let i = 0 ; i < sorted_array.length ; ++i){
-					table_string += "<tr><td>"+sorted_array[i].nom+"</td><td>"+sorted_array[i].valeur+"</td><td>"+(1/sorted_array[i].valeur)+"</td></tr>";
+					table_string += "<tr><td>"+sorted_array[i].nom+'</td><td id="val_'+sorted_array[i].id+'">'+sorted_array[i].valeur+'</td><td id="onetoval_'+sorted_array[i].id+'">'+(1/sorted_array[i].valeur)+"</td></tr>";
 				}
 				document.getElementById("table_content").innerHTML = table_string;
 			}
@@ -176,7 +229,32 @@
 			function compareNameDesc(a, b) {const genreA = a.nom.toUpperCase();const genreB = b.nom.toUpperCase();let comparison = 0;if (genreA > genreB) {comparison = 1;} else if (genreA < genreB) {comparison = -1;}return comparison*-1;}
 			function compareValue(a, b) {const genreA = a.valeur;const genreB = b.valeur;let comparison = 0;if (genreA > genreB) {comparison = 1;} else if (genreA < genreB) {comparison = -1;}return comparison;}
 			function compareValueDesc(a, b) {const genreA = a.valeur;const genreB = b.valeur;let comparison = 0;if (genreA > genreB) {comparison = 1;} else if (genreA < genreB) {comparison = -1;}return comparison*-1;}
+			function compareOnetoval(a, b) {const genreA = 1/a.valeur;const genreB = 1/b.valeur;let comparison = 0;if (genreA > genreB) {comparison = 1;} else if (genreA < genreB) {comparison = -1;}return comparison;}
+			function compareOnetovalDesc(a, b) {const genreA = 1/a.valeur;const genreB = 1/b.valeur;let comparison = 0;if (genreA > genreB) {comparison = 1;} else if (genreA < genreB) {comparison = -1;}return comparison*-1;}
 			var myVar = setInterval(convert, 200);
 		</script>
+		<script type="text/javascript">
+			function ping(url)
+			{
+				let start = Date.now();
+				img = new Image();
+
+				img.onload = function() {
+					clearTimeout(timer);
+					timer = null;
+					setPing(Date.now()-start);
+				};
+				img.src = url;
+				timer = setTimeout("pingThis.pingFailure()",300000);//wait five minutes
+			}
+
+			var imgLink = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png?time="+Date.now();
+			ping(imgLink);
+
+			var actualizePing = setInterval(function(){
+				var imgLink = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png?time="+Date.now();
+				ping(imgLink);
+			}, 1000);
+	   	</script>
 	</body>
 </html>
