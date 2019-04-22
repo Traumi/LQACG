@@ -15,7 +15,7 @@
 <div class="col-2  <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
-        <image xlink:href="./images/penta/<?php echo $level; ?>.png" x="100" y="65" height="325" width="800" />
+        <image xlink:href="./images/pentakill/<?php echo $level; ?>.png" x="100" y="65" height="300" width="800" />
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['PENTA']; ?></text>
@@ -41,7 +41,7 @@
 <div class="col-2  <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
-        <image xlink:href="./images/quadra/<?php echo $level; ?>.png" x="280" y="65" height="325" width="440" /> 
+        <image xlink:href="./images/quadrakill/<?php echo $level; ?>.png" x="100" y="65" height="300" width="800" /> 
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['QUADRA']; ?></text>
@@ -67,7 +67,7 @@
 <div class="col-2  <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
-        <!--<image xlink:href="./images/triple/<?php echo $level; ?>.png" x="100" y="0" height="650" width="800" /> -->
+        <image xlink:href="./images/triplekill/<?php echo $level; ?>.png" x="100" y="65" height="300" width="800" /> 
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['TRIPLE_KILL']; ?></text>
@@ -93,7 +93,7 @@
 <div class="col-2  <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
-        <!--<image xlink:href="./images/double/<?php echo $level; ?>.png" x="100" y="0" height="650" width="800" /> -->
+        <image xlink:href="./images/doublekill/<?php echo $level; ?>.png" x="100" y="65" height="300" width="800" /> 
         <?php display_stars($i); ?>
         <text x="500" y="625" text-anchor="middle" font-weight="800" font-size="125"><?php echo $level_value; ?></text>
         <text x="500" y="725" text-anchor="middle" font-weight="600" font-size="75"><?php echo $lol_profil['DOUBLE_KILL']; ?></text>

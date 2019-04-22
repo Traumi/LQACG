@@ -47,7 +47,7 @@
 
     function initDark(){
         let night = getCookie("NIGHTMODE");
-        if(night == "true"){
+        if(night == "true" || night == ""){
             document.getElementsByTagName("body")[0].classList.add("dark");
             document.getElementById("nightMode").checked = true;
         }

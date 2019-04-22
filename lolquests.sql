@@ -43,7 +43,8 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`LOGIN`, `PASSWORD`, `LOL_ACCOUNT`, `PROFIL`, `INSCRIPTION`, `TPC`) VALUES
 ('Test', '$2y$12$WmZW/G1800BtIcqcqJKr4eFlDYHYCEGUDwxPdTEoOUyzb.eOB3A4y', NULL, 0, '2019-04-08', '532ea-eb95bb342d3ee3d0'),
-('Traumination', '$2y$12$w1ojIQOUwqXmtO6RQJM0ouSdP6iaEaKkaeee3PQNvPKL0XDOE.VoO', 'Traumination', 4, '2019-04-03', 'd4551-3f20833efb38c70a');
+('Traumination', '$2y$12$w1ojIQOUwqXmtO6RQJM0ouSdP6iaEaKkaeee3PQNvPKL0XDOE.VoO', 'Traumination', 4, '2019-04-03', 'd4551-3f20833efb38c70a'),
+('VCTNitro', '$2y$12$XCgAMpx.cWwl.y6xuXY0sOl.ZgOHzo6b/GNsQwuImlvB1Xr/ZWD4O', 'VCTNïtro', 0, '2019-04-12', '32af6-ec6058c2a2e664e3');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,8 @@ CREATE TABLE `lol_profile` (
 --
 
 INSERT INTO `lol_profile` (`PSEUDO`, `LAST_UPDATE`, `GAMES`, `WIN`, `PENTA`, `FARM`, `QUADRA`, `TRIPLE_KILL`, `DOUBLE_KILL`, `SIMPLE_KILL`, `DEATH`, `ASSIST`, `TOWER`, `INHIB`, `TANK`, `SUPPORT`, `MARKSMAN`, `MAGE`, `FIGHTER`, `ASSASSIN`, `T_RiftHerald`, `T_Drake`, `T_Baron`, `T_Vilemaw`) VALUES
-('Traumination', '2019-04-19 12:07:04', 499, 269, 0, 47944, 2, 26, 217, 2577, 2553, 5072, 391, 74, 256, 123, 70, 216, 257, 34, 93, 507, 153, 0);
+('Traumination', '2019-04-19 12:07:04', 499, 269, 0, 47944, 2, 26, 217, 2577, 2553, 5072, 391, 74, 256, 123, 70, 216, 257, 34, 93, 507, 153, 0),
+('VCTNïtro', '2019-04-12 21:05:44', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
