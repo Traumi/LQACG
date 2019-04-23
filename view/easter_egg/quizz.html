@@ -1,0 +1,156 @@
+<html>
+    <head>
+        <title>Try your luck</title>
+        <style>
+            .inv{
+                background:#1a1a1a;
+                color:#f1f1f1;
+                padding:5px;
+            }
+            pre{
+                margin:0;
+                font-size:14px;
+                height:50vh;
+                overflow:hidden;
+                border-bottom:solid #414141 1px;
+            }
+            #input{
+                width:calc(100% - 15px);
+                background:transparent;
+                border:none;
+                color:white;
+                font-size:14px;
+                font-family: monospace;
+                display:inline-block;
+            }
+            #input:focus{
+                border:none;
+                outline: none;
+            }
+            .container{
+                width:70%;
+                margin:auto;
+                margin-top:50px;
+                z-index: 2;
+            }
+            .start_line{
+                font-size:14px;
+                font-family: monospace;
+                width:15px;
+                display:inline-block;
+            }
+            h1,h2,h3,h4,h5,h6{
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="position:absolute;bottom:20%;left:87%;color:white;height:20px;" id="useless_1"></div>
+        <div class="container">
+            <h2>Try your luck...</h2>
+            <div class="inv">
+                <pre><code id="cmd"></code></pre>
+                <div>
+                    <span class="start_line">></span><input id="input" type="text"/>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            var step = 0;
+            var pseudo = "";
+            
+
+            var num_quest = 0;
+            var token_quest = "";
+            var botName = document.createElement("span");
+            botName.style.color = "#DF1111";
+            var textnode = document.createTextNode("[TraumiBot] >> ");
+            botName.appendChild(textnode);
+
+            document.getElementById("cmd").append(botName);
+            document.getElementById("cmd").append("Entrez votre pseudo In-Game !\n");
+
+            submit = function(){
+                let entry = document.getElementById("input").value;
+                if(entry.length > 0){
+                    document.getElementById("cmd").append("> "+entry+"\n")
+                    if(step != 0){
+                        request(num_quest, token_quest, entry, pseudo);
+                    }
+                    else{
+                        pseudo = entry;
+                        document.getElementById("cmd").append(botName);
+                        document.getElementById("cmd").append("Bienvenue "+pseudo+" !\n");
+                        document.getElementById("cmd").append(botName);
+                        document.getElementById("cmd").append("Quand est-ce que cette version du serveur a ouvert ses portes au public ? (JJ/MM/AAAA)\n");
+                        step = 1;
+                    }
+                    document.getElementById("input").value = "";
+                }
+            }
+            display_token1 = function(){
+                document.getElementById("useless_1").innerHTML = token;
+                console.log("ok")
+            }
+            var token = "aC7Q4ij%";
+            hide_token1 = function(){
+                document.getElementById("useless_1").innerHTML = "";
+                console.log("ko")
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if(!event.ctrlKey){
+                    document.getElementById("input").focus();
+                    if(event.code == "Enter"){
+                        submit();
+                    }
+                }
+            }, false);
+        </script>
+        <script>
+            if (window.XMLHttpRequest)    //  Objet standard
+            { 
+                xhr = new XMLHttpRequest();     //  Firefox, Safari, ...
+            } 
+            else  if (window.ActiveXObject)      //  Internet Explorer
+            {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            request = function(number, token, data, pseudo){
+                if(pseudo.length <= 0) return;
+                xhr.onreadystatechange = function()
+                {
+                    if (xhr.readyState == 4) 
+                    { 
+                        console.log(xhr.responseText);
+                        if(xhr.status  == 200){
+                            let resp = JSON.parse(xhr.responseText);
+                            
+                            if(resp.status == 1){
+                                num_quest++;
+                                if(num_quest == 1) display_token1();
+                                if(num_quest != 1) hide_token1();
+                                token_quest = resp.token;
+                            }
+                            document.getElementById("cmd").append("[TraumiBot] >> "+resp.message+"\n")
+                        } 
+                        else{
+                            document.getElementById("cmd").append("[TraumiBot] >> Erreur : "+xhr.status+"\n")
+                        }
+                        document.getElementById("cmd").scrollTop = document.getElementById("cmd").scrollHeight;
+                    }
+                    else
+                    { 
+                    // Attendre...
+                    }
+                };
+
+                xhr.open('POST', 'http://localhost/lqacg_api/view/easter_egg/data.php', true);
+                xhr.send('{"message":"'+data+'","pseudo":"'+pseudo+'","number":"'+number+'","token":"'+token+'"}');
+            }
+        </script>
+    </body>
+</html>
