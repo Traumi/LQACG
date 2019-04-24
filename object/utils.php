@@ -20,6 +20,9 @@
             case 5 :
                 $level="platinum";
                 break;
+            case 6 :
+                $level="master";
+                break;
             default :
                 $level="base";
                 break;
@@ -46,6 +49,9 @@
                 break;
             case 5 :
                 $nlvl = "Platine";
+                break;
+            case 6 :
+                $nlvl = "Master";
                 break;
             default :
                 $nlvl = "/";

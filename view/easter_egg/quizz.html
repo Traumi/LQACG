@@ -11,8 +11,13 @@
                 margin:0;
                 font-size:14px;
                 height:50vh;
+                width:100%;
                 overflow:hidden;
                 border-bottom:solid #414141 1px;
+                white-space: pre-wrap;
+                white-space: -moz-pre-wrap;
+                white-space: -o-pre-wrap;
+                word-wrap: break-word;
             }
             #input{
                 width:calc(100% - 15px);
@@ -48,13 +53,58 @@
     <body>
         <div style="position:absolute;bottom:20%;left:87%;color:white;height:20px;" id="useless_1"></div>
         <div class="container">
-            <h2>Try your luck...</h2>
+            <h2>TraumiBoard</h2>
             <div class="inv">
-                <pre><code id="cmd"></code></pre>
+                <pre id="pre_cmd"><code id="cmd"></code></pre>
                 <div>
                     <span class="start_line">></span><input id="input" type="text"/>
                 </div>
             </div>
+            <svg viewBox="0 0 500 100" style="width:100%;">
+                <g transform="translate(0,0)">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#444;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:black;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+    
+                    <path d="M 0,45 L 225,45 L 250,70 L 275,45 L 500,45 L 500,50 L463,60 L 280,60 L 250,90 L 220,60 L 37,60 L 0,50 Z" fill="url(#grad1)" style="stroke:transparent;"/>
+                    <path d="M 150,65 L 215,65 L 235,85 Z" stroke="url(#grad1)" stroke-width="3" fill="white"/>
+                    <path d="M 350,65 L 285,65 L 265,85 Z" stroke="url(#grad1)" stroke-width="3" fill="white"/>
+    
+                    <path d="M 250,20.5 L 250,49.5" style="stroke:black;stroke-width:1px;"/>
+                    <path d="M 235.5,35 L 264.5,35" style="stroke:black;stroke-width:1px;"/>
+                    <path d="M 250,35 L 250,50 L 235,35 Z" style="fill:#222; stroke:transparent;"/>
+                    <path d="M 250,35 L 250,20 L 265,35 Z" style="fill:#222; stroke:transparent;"/>
+                    <path d="M 250,35 L 250,20 L 235,35 Z" style="fill:#444; stroke:transparent;"/>
+                    <path d="M 250,35 L 250,50 L 265,35 Z" style="fill:#000; stroke:transparent;"/>
+    
+                    <path d="M 250,75.5 L 250,84.5" style="stroke:#940f0f;stroke-width:1px;"/>
+                    <path d="M 245.5,80 L 254.5,80" style="stroke:#940f0f;stroke-width:1px;"/>
+                    <path d="M 250,75 L 250,80 L 245,80 Z" style="fill:#b33131; stroke:transparent;"/>
+                    <path d="M 250,85 L 250,80 L 245,80 Z" style="fill:#940f0f; stroke:transparent;"/>
+                    <path d="M 250,75 L 250,80 L 255,80 Z" style="fill:#940f0f; stroke:transparent;"/>
+                    <path d="M 250,85 L 250,80 L 255,80 Z" style="fill:#740404; stroke:transparent;"/>
+    
+                    <g transform="translate(-27.5,-27.5)">
+                        <path d="M 250,75.5 L 250,84.5" style="stroke:#940f0f;stroke-width:1px;"/>
+                        <path d="M 245.5,80 L 254.5,80" style="stroke:#940f0f;stroke-width:1px;"/>
+                        <path d="M 250,75 L 250,80 L 245,80 Z" style="fill:#b33131; stroke:transparent;"/>
+                        <path d="M 250,85 L 250,80 L 245,80 Z" style="fill:#940f0f; stroke:transparent;"/>
+                        <path d="M 250,75 L 250,80 L 255,80 Z" style="fill:#940f0f; stroke:transparent;"/>
+                        <path d="M 250,85 L 250,80 L 255,80 Z" style="fill:#740404; stroke:transparent;"/>
+                    </g>
+                    <g transform="translate(27.5,-27.5)">
+                        <path d="M 250,75.5 L 250,84.5" style="stroke:#940f0f;stroke-width:1px;"/>
+                        <path d="M 245.5,80 L 254.5,80" style="stroke:#940f0f;stroke-width:1px;"/>
+                        <path d="M 250,75 L 250,80 L 245,80 Z" style="fill:#b33131; stroke:transparent;"/>
+                        <path d="M 250,85 L 250,80 L 245,80 Z" style="fill:#940f0f; stroke:transparent;"/>
+                        <path d="M 250,75 L 250,80 L 255,80 Z" style="fill:#940f0f; stroke:transparent;"/>
+                        <path d="M 250,85 L 250,80 L 255,80 Z" style="fill:#740404; stroke:transparent;"/>
+                    </g>
+                </g>
+            </svg>
         </div>
         
         <script>
@@ -64,12 +114,16 @@
 
             var num_quest = 0;
             var token_quest = "";
-            var botName = document.createElement("span");
-            botName.style.color = "#DF1111";
-            var textnode = document.createTextNode("[TraumiBot] >> ");
-            botName.appendChild(textnode);
 
-            document.getElementById("cmd").append(botName);
+            createBotName = function(){
+                var botName = document.createElement("span");
+                botName.style.color = "#DF1111";
+                var textnode = document.createTextNode("[TraumiBot] >> ");
+                botName.appendChild(textnode);
+                return botName;
+            }
+
+            document.getElementById("cmd").append(createBotName());
             document.getElementById("cmd").append("Entrez votre pseudo In-Game !\n");
 
             submit = function(){
@@ -77,27 +131,31 @@
                 if(entry.length > 0){
                     document.getElementById("cmd").append("> "+entry+"\n")
                     if(step != 0){
-                        request(num_quest, token_quest, entry, pseudo);
+                        request(num_quest, token_quest, entry, pseudo, userip);
                     }
                     else{
                         pseudo = entry;
-                        document.getElementById("cmd").append(botName);
-                        document.getElementById("cmd").append("Bienvenue "+pseudo+" !\n");
-                        document.getElementById("cmd").append(botName);
-                        document.getElementById("cmd").append("Quand est-ce que cette version du serveur a ouvert ses portes au public ? (JJ/MM/AAAA)\n");
-                        step = 1;
+                        if(entry.toLowerCase() == "traumination"){
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append("Il ne peut y avoir qu'un seul Traumination !\n");
+                        }else{
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append("Bienvenue "+pseudo+" !\n");
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append("Quand est-ce que cette version du serveur a ouvert ses portes au public ? (JJ/MM/AAAA)\n");
+                            step = 1;
+                        }
+                        
                     }
                     document.getElementById("input").value = "";
                 }
             }
             display_token1 = function(){
                 document.getElementById("useless_1").innerHTML = token;
-                console.log("ok")
             }
             var token = "aC7Q4ij%";
             hide_token1 = function(){
                 document.getElementById("useless_1").innerHTML = "";
-                console.log("ko")
             }
 
             document.addEventListener('keydown', (event) => {
@@ -119,7 +177,7 @@
                 xhr = new ActiveXObject("Microsoft.XMLHTTP");
             }
 
-            request = function(number, token, data, pseudo){
+            request = function(number, token, data, pseudo, ip){
                 if(pseudo.length <= 0) return;
                 xhr.onreadystatechange = function()
                 {
@@ -132,15 +190,17 @@
                             if(resp.status == 1){
                                 num_quest++;
                                 if(num_quest == 1) display_token1();
-                                if(num_quest != 1) hide_token1();
+                                if(num_quest == 2) hide_token1();
                                 token_quest = resp.token;
                             }
-                            document.getElementById("cmd").append("[TraumiBot] >> "+resp.message+"\n")
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append(resp.message+"\n")
                         } 
                         else{
-                            document.getElementById("cmd").append("[TraumiBot] >> Erreur : "+xhr.status+"\n")
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append("Erreur : "+xhr.status+"\n")
                         }
-                        document.getElementById("cmd").scrollTop = document.getElementById("cmd").scrollHeight;
+                        document.getElementById("pre_cmd").scrollTop = document.getElementById("pre_cmd").scrollHeight;
                     }
                     else
                     { 
@@ -149,8 +209,59 @@
                 };
 
                 xhr.open('POST', 'http://localhost/lqacg_api/view/easter_egg/data.php', true);
-                xhr.send('{"message":"'+data+'","pseudo":"'+pseudo+'","number":"'+number+'","token":"'+token+'"}');
+                xhr.send('{"message":"'+data+'","pseudo":"'+pseudo+'","number":"'+number+'","token":"'+token+'","ip":"'+ip+'"}');
             }
+
+            /**
+            * Get the user IP throught the webkitRTCPeerConnection
+            * @param onNewIP {Function} listener function to expose the IP locally
+            * @return undefined
+            */
+            function getUserIP(onNewIP) { //  onNewIp - your listener function for new IPs
+                //compatibility for firefox and chrome
+                var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+                var pc = new myPeerConnection({
+                    iceServers: []
+                }),
+                noop = function() {},
+                localIPs = {},
+                ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
+                key;
+
+                function iterateIP(ip) {
+                    if (!localIPs[ip]) onNewIP(ip);
+                    localIPs[ip] = true;
+                }
+
+                //create a bogus data channel
+                pc.createDataChannel("");
+
+                // create offer and set local description
+                pc.createOffer().then(function(sdp) {
+                    sdp.sdp.split('\n').forEach(function(line) {
+                        if (line.indexOf('candidate') < 0) return;
+                        line.match(ipRegex).forEach(iterateIP);
+                    });
+                    
+                    pc.setLocalDescription(sdp, noop, noop);
+                }).catch(function(reason) {
+                    // An error occurred, so handle the failure to connect
+                });
+
+                //listen for candidate events
+                pc.onicecandidate = function(ice) {
+                    if (!ice || !ice.candidate || !ice.candidate.candidate || !ice.candidate.candidate.match(ipRegex)) return;
+                    ice.candidate.candidate.match(ipRegex).forEach(iterateIP);
+                };
+            }
+
+            // Usage
+
+            getUserIP(function(ip){
+                userip = ip;
+            });
+
+            var userip;
         </script>
     </body>
 </html>

@@ -143,6 +143,18 @@ footer > .night{
     fill: #3c7877;
 }
 
+.master circle {
+    stroke: #1d1b19;
+}
+
+.master text {
+    fill: #940f0f;
+}
+
+.master path {
+    fill: #1d1b19; /*3a3430 1d1b19*/
+}
+
 .trophy{
     margin-bottom:10px;
 }
