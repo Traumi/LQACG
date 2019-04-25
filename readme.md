@@ -8,8 +8,8 @@ LoL Quest And Challenges Generator
 
     class Site{
         public function __construct() {
-            $this->version = "0.3";
-            $this->riotPatch = "9.7.1";
+            $this->version = "0.3.1";
+            $this->riotPatch = "9.8.1";
             $this->key = "YOUR-API-KEY";
         }
     }
@@ -17,7 +17,7 @@ LoL Quest And Challenges Generator
 ?>
 ```
 
-- Add a ddragon folder and paste your patch version of ddragon : [9.7.1 Patch](https://ddragon.leagueoflegends.com/cdn/dragontail-9.7.1.tgz)
+- Add a ddragon folder and paste your patch version of ddragon : [9.8.1 Patch](https://ddragon.leagueoflegends.com/cdn/dragontail-9.8.1.tgz)
 - Create a database with the sql file available here
 - Simply run it on an Apache Server
 
