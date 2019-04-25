@@ -35,7 +35,7 @@
     $quest[2]["rep"] = ["GG","gg"];
     $quest[2]["token"] = "AFK45";
     $quest[3]["name"] = "Bravo! Tu sais donc lire! Allez, plus dur : Je suis caché sur l'ile du spawn, à toi de me dire ce qu'il y a à savoir !";
-    $quest[3]["rep"] = ["0 100 0"];
+    $quest[3]["rep"] = ["..."];//x y z
     $quest[3]["token"] = "MLa6KnT";
     $quest[4]["name"] = "C'était facile, non? Et sinon, peux-tu me donner le pseudo de ton administratrice préférée?";
     $quest[4]["rep"] = ["Haxana","haxana","ChloeAs","Chloeas","chloeas"];
@@ -71,7 +71,37 @@
     $error_messages[8] = "Bonne réponse ! Ou pas...";
     $error_messages[9] = "Tu connais l'histoire du mec qui arrivait pas à avoir la bonne réponse ?";
     $error_messages[10] = "Essaye autre chose";
-    $error_messages[11] = "La légende raconte qu'il parvint à trouver la bonne réponse une fois...";
+    $error_messages[11] = "La légende raconte qu'il parvint à trouver la bonne réponse, une fois...";
+    $error_messages[12] = "Même les contes de mon enfance sonnent plus vrais...";
+    $error_messages[13] = "C'est à cause de ce genre de réponse qu'on en est la !";
+    $error_messages[14] = "Je pensais que le but était de gagner...";
+    $error_messages[15] = "On dirait que ça t'amuse...";
+
+    function joke(){
+        $joke_list = [
+            "Qu'est-ce qui n'est pas un steak ? Une pas steak ! (Pastèque)\\n",
+            "Qu'est-ce qui est jaune et qui attends ? Jaune attends ! (Jonathan)\\n",
+            "Pourquoi il faut toujours faire confiance aux plombiers ? Car ils te donnent toujours les bons tuyaux !\\n"
+        ];
+        $index = rand(0, sizeof($joke_list)-1);
+        return $joke_list[$index];
+    }
+
+    $easter_eggs = [
+        "kfc" => "So good...",
+        "traumination" => "Sans conteste la personne la plus géniale !",
+        "traumibot" => "A votre service '-[^_^]-'",
+        "/ci" => "/ban ".$pseudo." 1y",
+        "/win" => "Félicitation, vous avez gagné !",
+        "win" => "Félicitation, vous avez gagné !",
+        "x" => "X to doubt",
+        "gign" => "/ignore @a",
+        "418" => "I'm a teapot",
+        "sms" => "omg m8 u r so obvious, c u l8tR",
+        "chocolatine" => "Franchement, qui pourrait croire que c'est une réponse valable? Cherche encore!",
+        "joke" => joke()."Ah on me dit dans l'oreillette que Traumination s'est fait derank...",
+        "pwet" => "pwet"
+    ];
 
     if(strtolower($message) == "help" || strtolower($message) == "oskour" || strtolower($message) == "aide"){
         $response = "Ah bah c'est pas de pot ça, je vais te donner un petit coup de pouce : \\n";
@@ -80,26 +110,8 @@
         $response .= "3 - Demander des indices à Traumination n'aboutira surement à rien ! \\n";
         $response .= "4 - Le gagnant sera le premier à terminer cet event ! \\n";
         $response .= "5 - Quelques easter eggs sont cachés dans ce module, à toi d'en découvrir le plus possible ;) !";
-    }else if(strtolower($message) == "kfc"){
-        $response = "So good...";
-    }else if(strtolower($message) == "traumination"){
-        $response = "Someone awesome !";
-    }else if(strtolower($message) == "/ci"){
-        $response = "/ban ".$pseudo." 1y";
-    }else if(strtolower($message) == "/win"){
-        $response = "Félicitation, vous avez gagné";
-    }else if(strtolower($message) == "win"){
-        $response = "Félicitation, vous avez gagné";
-    }else if(strtolower($message) == "x"){
-        $response = "X to doubt";
-    }else if(strtolower($message) == "gign"){
-        $response = "/ignore @a";
-    }else if(strtolower($message) == "418"){
-        $response = "I'm a teapot";
-    }else if(strtolower($message) == "sms"){
-        $response = "omg m8 u r so obvious, c u l8tR";
-    }else if(strtolower($message) == "chocolatine"){
-        $response = "Franchement, qui pourrait croire que c'est une réponse valable? Cherche encore!";
+    }else if(array_key_exists(strtolower($message), $easter_eggs)){
+        $response = $easter_eggs[$message];
     }else{
         if($num < sizeof($quest)){
             if($token == $quest[$num]["token"]){
@@ -108,7 +120,7 @@
                     if($message == $quest[$num]["rep"][$i]){
                         $status = 1;
                         if(($num+1) >= sizeof($quest)){
-                            $response = "Y a plus rien :(";
+                            $response = "Y a plus rien à voir. (Bien joué)";
                             $token = "";
                         }else{
                             $response = $quest[$num+1]["name"];
@@ -117,7 +129,10 @@
                         $good = true;
                     }
                 }
-                if(!$good){$response = "Nope";}
+                if(!$good){
+                    $index = rand(0, sizeof($error_messages)-1);
+                    $response = $error_messages[$index];
+                }
                 
             }else{
                 $response = "Tricheur de ses morts";

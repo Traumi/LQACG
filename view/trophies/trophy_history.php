@@ -12,7 +12,7 @@
     $nlvl=getTrophyLevelName($i);
     if($i >= 0){
 ?>
-<div class="col-2 trophy <?php echo $level; ?>">
+<div class="col-6 col-sm-4 col-md-3 col-xl-2 <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/games/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" /> -->
@@ -38,7 +38,7 @@
     $nlvl=getTrophyLevelName($i);
     if($i >= 0){
 ?>
-<div class="col-2  <?php echo $level; ?>">
+<div class="col-6 col-sm-4 col-md-3 col-xl-2 <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <!--<image xlink:href="./images/win/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" />-->

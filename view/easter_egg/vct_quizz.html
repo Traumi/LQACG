@@ -18,7 +18,6 @@
                 white-space: -moz-pre-wrap;
                 white-space: -o-pre-wrap;
                 word-wrap: break-word;
-                padding-bottom:3px;
             }
             #input{
                 width:calc(100% - 15px);
@@ -37,6 +36,7 @@
                 width:70%;
                 margin:auto;
                 margin-top:50px;
+                z-index: 2;
             }
             .start_line{
                 font-size:14px;
@@ -44,19 +44,14 @@
                 width:15px;
                 display:inline-block;
             }
-            h1,h2,h3,h4,h5,h6,#useless_2{
+            h1,h2,h3,h4,h5,h6{
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                 text-align: center;
-            }
-            #useless_2{
-                transition: opacity 1s ease-out;
-                opacity:0;
             }
         </style>
     </head>
     <body>
         <div style="position:absolute;bottom:20%;left:87%;color:white;height:20px;" id="useless_1"></div>
-        <div style="position:absolute;bottom:0;left:0;top:20vh;right:0;font-size:40vh;color:darkred;display:none;" id="useless_2">PWET</div>
         <div class="container">
             <h2>TraumiBoard</h2>
             <div class="inv">
@@ -80,10 +75,10 @@
     
                     <path d="M 250,20.5 L 250,49.5" style="stroke:black;stroke-width:1px;"/>
                     <path d="M 235.5,35 L 264.5,35" style="stroke:black;stroke-width:1px;"/>
-                    <path d="M 250,35 L 250,50 L 235,35 Z" style="fill:#222; stroke:transparent;" onclick="pwet()"/>
-                    <path d="M 250,35 L 250,20 L 265,35 Z" style="fill:#222; stroke:transparent;" onclick="pwet()"/>
-                    <path d="M 250,35 L 250,20 L 235,35 Z" style="fill:#444; stroke:transparent;" onclick="pwet()"/>
-                    <path d="M 250,35 L 250,50 L 265,35 Z" style="fill:#000; stroke:transparent;" onclick="pwet()"/>
+                    <path d="M 250,35 L 250,50 L 235,35 Z" style="fill:#222; stroke:transparent;"/>
+                    <path d="M 250,35 L 250,20 L 265,35 Z" style="fill:#222; stroke:transparent;"/>
+                    <path d="M 250,35 L 250,20 L 235,35 Z" style="fill:#444; stroke:transparent;"/>
+                    <path d="M 250,35 L 250,50 L 265,35 Z" style="fill:#000; stroke:transparent;"/>
     
                     <path d="M 250,75.5 L 250,84.5" style="stroke:#940f0f;stroke-width:1px;"/>
                     <path d="M 245.5,80 L 254.5,80" style="stroke:#940f0f;stroke-width:1px;"/>
@@ -129,7 +124,7 @@
             }
 
             document.getElementById("cmd").append(createBotName());
-            document.getElementById("cmd").append("Entrez votre pseudo In-Game !\n");
+            document.getElementById("cmd").append("Entrez votre pseudo !\n");
 
             submit = function(){
                 let entry = document.getElementById("input").value;
@@ -147,7 +142,7 @@
                             document.getElementById("cmd").append(createBotName());
                             document.getElementById("cmd").append("Bienvenue "+pseudo+" !\n");
                             document.getElementById("cmd").append(createBotName());
-                            document.getElementById("cmd").append("Quand est-ce que cette version du serveur a ouvert ses portes au public ? (JJ/MM/AAAA)\n");
+                            document.getElementById("cmd").append("Quand est-ce que ce discord a ouvert ? (JJ/MM/AAAA)\n");
                             step = 1;
                         }
                         
@@ -161,20 +156,6 @@
             var token = "aC7Q4ij%";
             hide_token1 = function(){
                 document.getElementById("useless_1").innerHTML = "";
-            }
-            pwet = function(){
-                request(num_quest, token_quest, "pwet", pseudo, userip);
-                document.getElementById("useless_2").style.display = "block";
-                document.getElementById("useless_2").style.opacity = "0";
-                setTimeout(function(){
-                    document.getElementById("useless_2").style.opacity = "1";
-                }, 10); 
-                setTimeout(function(){
-                    document.getElementById("useless_2").style.opacity = "0";
-                }, 3000); 
-                setTimeout(function(){
-                    document.getElementById("useless_2").style.display = "none";
-                }, 4000); 
             }
 
             document.addEventListener('keydown', (event) => {
