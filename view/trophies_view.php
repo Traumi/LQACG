@@ -154,6 +154,7 @@
     $levels_values = json_decode(file_get_contents("./data/static/levels.json"),true);
     $level_max = 7;
     ?>
+    
     <div class="row" style="width:90%;margin:auto;">
         <div class="col-12"><h3 class="text-center">In Game</h3></div>
         <div class="col-12">

@@ -1,3 +1,29 @@
+<svg width="0" height="0">
+    <defs>
+        <filter id="dropshadow2" height="1000%" width="1000%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="15"/>
+            <feOffset dx="0" dy="0" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="2.25"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <filter id="dropshadow" height="130%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10"/>
+            <feOffset dx="0" dy="0" result="offsetblur"/>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="1"/>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+</svg>
 <?php
 
     function getTrophyLevel($i){
@@ -95,7 +121,7 @@
                 </svg>
             </g>';
         }
-        if($i >= 4){
+        if($i >= 4 && $i < 6){
             echo '
             <g transform="translate(200,190)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="94" viewbox="0 0 260 245">
@@ -108,11 +134,29 @@
                 </svg>
             </g>';
         }
-        if($i >= 5){
+        if($i == 5){
             echo '
             <g transform="translate(420,375)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="160" height="150" viewbox="0 0 260 245">
                     <path d="m55,237 74-228 74,228L9,96h240"/>
+                </svg>
+            </g>';
+        }
+        if($i == 6){
+            echo '
+            <g transform="translate(420,375)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="160" height="150" viewbox="0 0 260 245">
+                    <path d="m55,237 74-228 74,228L9,96h240" class="master_star"  style="filter:url(#dropshadow2)"/>
+                </svg>
+            </g>
+            <g transform="translate(200,190)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="94" viewbox="0 0 260 245">
+                    <path d="m55,237 74-228 74,228L9,96h240" class="master_star"/>
+                </svg>
+            </g>
+            <g transform="translate(700,190)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="94" viewbox="0 0 260 245">
+                    <path d="m55,237 74-228 74,228L9,96h240" class="master_star"/>
                 </svg>
             </g>';
         }

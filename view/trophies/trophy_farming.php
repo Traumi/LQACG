@@ -14,7 +14,6 @@
 ?>
 <div class="col-6 col-sm-4 col-md-3 col-xl-2 <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
-        <defs><filter id="dropshadow" height="130%"><feGaussianBlur in="SourceGraphic" stdDeviation="10"/><feOffset dx="0" dy="0" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="1"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <image xlink:href="./images/minions/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" style="filter:url(#dropshadow)" /> 
         <?php display_stars($i); ?>
@@ -41,7 +40,6 @@
 ?>
 <div class="col-6 col-sm-4 col-md-3 col-xl-2 <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
-        <defs><filter id="dropshadow" height="130%"><feGaussianBlur in="SourceGraphic" stdDeviation="10"/><feOffset dx="0" dy="0" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="1"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <image xlink:href="./images/tower/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" style="filter:url(#dropshadow)" />
         <?php display_stars($i); ?>
@@ -68,7 +66,6 @@
 ?>
 <div class="col-6 col-sm-4 col-md-3 col-xl-2  <?php echo $level; ?>">
     <svg viewbox="0 0 1000 1000" style="width:100%;">
-        <defs><filter id="dropshadow" height="130%"><feGaussianBlur in="SourceGraphic" stdDeviation="10"/><feOffset dx="0" dy="0" result="offsetblur"/><feComponentTransfer><feFuncA type="linear" slope="1"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
         <circle cx="500" cy="400" r="390" stroke="black" stroke-width="10" fill="transparent"/>
         <image xlink:href="./images/inhib/<?php echo $level; ?>.png" x="100" y="50" height="315" width="800" style="filter:url(#dropshadow)" />
         <?php display_stars($i); ?>
