@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Try your luck</title>
+        <meta charset="UTF-8">
         <style>
             .inv{
                 background:#1a1a1a;
@@ -140,8 +141,12 @@
                 let entry = document.getElementById("input").value;
                 if(entry.length > 0){
                     document.getElementById("cmd").append("> "+entry+"\n")
-                    if(step != 0){
-                        request(num_quest, token_quest, entry, pseudo, userip);
+                    if(step != 0 || entry.toLowerCase() == "clear"){
+                        if(entry.toLowerCase() == "clear"){
+                            document.getElementById("cmd").innerHTML = "";
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append("Console effacée !\n");
+                        }else request(num_quest, token_quest, entry, pseudo, userip);
                     }
                     else{
                         pseudo = entry;
@@ -151,6 +156,8 @@
                         }else{
                             document.getElementById("cmd").append(createBotName());
                             document.getElementById("cmd").append("Bienvenue "+pseudo+" !\n");
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append("Tapez help pour obtenir l'aide !\n");
                             document.getElementById("cmd").append(createBotName());
                             document.getElementById("cmd").append("Quand est-ce que cette version du serveur a ouvert ses portes au public ? (JJ/MM/AAAA)\n");
                             step = 1;

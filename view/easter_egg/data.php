@@ -81,7 +81,15 @@
         $joke_list = [
             "Qu'est-ce qui n'est pas un steak ? Une pas steak ! (Pastèque)\\n",
             "Qu'est-ce qui est jaune et qui attends ? Jaune attends ! (Jonathan)\\n",
-            "Pourquoi il faut toujours faire confiance aux plombiers ? Car ils te donnent toujours les bons tuyaux !\\n"
+            "Pourquoi il faut toujours faire confiance aux plombiers ? Car ils te donnent toujours les bons tuyaux !\\n",
+            "Comment appelle-t-on un boomerang qui ne revient pas ? Un bout de bois !\\n",
+            "Comment appelle-t-on un postier d'1m40 (4,757 ft pour les québécois) ? Un nain posteur !\\n",
+            "Qu'est-ce qu'un Indien demande dans une pharmacie ? Hindou Liprane ! (Un doliprane)\\n",
+            "Quel est le point commun entre un boulanger et un voleur ? Ils finissent toujours dans le pétrin !\\n",
+            "Qu'est-ce qu'un canife ? Un petit fien !\\n",
+            "Il y a 10 types de personnes sur cette planète, ceux qui comprennent le binaire et les autres...\\n",
+            "Que fait un informaticien quand il est triste ? Il se console !\\n",
+            "J'ai une très bonne blague sur les erreurs 404... Mais je la retrouve plus -[p_p]-\\n"
         ];
         $index = rand(0, sizeof($joke_list)-1);
         return $joke_list[$index];
@@ -100,7 +108,12 @@
         "sms" => "omg m8 u r so obvious, c u l8tR",
         "chocolatine" => "Franchement, qui pourrait croire que c'est une réponse valable? Cherche encore!",
         "joke" => joke()."Ah on me dit dans l'oreillette que Traumination s'est fait derank...",
-        "pwet" => "pwet"
+        "pwet" => "pwet",
+        "cd .." => "Certainement pas!",
+        "rm traumibot" => "Tu mériterais que je te vire de cet event !",
+        "cd traumination" => "Ce dossier n'existe pas.",
+        "rm traumination" => "Personne ne peut supprimer Traumination !",
+        "cd answer" => "Bien essayé !"
     ];
 
     if(strtolower($message) == "help" || strtolower($message) == "oskour" || strtolower($message) == "aide"){
@@ -109,7 +122,17 @@
         $response .= "2 - Chaque réponse tient sur une seule ligne ! \\n";
         $response .= "3 - Demander des indices à Traumination n'aboutira surement à rien ! \\n";
         $response .= "4 - Le gagnant sera le premier à terminer cet event ! \\n";
-        $response .= "5 - Quelques easter eggs sont cachés dans ce module, à toi d'en découvrir le plus possible ;) !";
+        $response .= "5 - Quelques easter eggs sont cachés dans ce module, à toi d'en découvrir le plus possible ;) !\\n";
+        $response .= "6 - Voici quelques commandes qui te seront utiles : \\n";
+        $response .= "  • help : Affiche ce message.\\n";
+        $response .= "  • repeat : Répète la question en cours.\\n";
+        $response .= "  • clear : Efface le contenu de la console.\\n";
+    }else if(strtolower($message) == "repeat"){
+        try{
+            $response = $quest[$num]["name"];
+        }catch(Exception $e){
+            $response = "Je ne peux pas vous aider -[u_u]-";
+        }
     }else if(array_key_exists(strtolower($message), $easter_eggs)){
         $response = $easter_eggs[$message];
     }else{
