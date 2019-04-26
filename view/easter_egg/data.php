@@ -15,12 +15,15 @@
 
     $response = "";
     $status = 0;
+    $bsod = false;
+    $rsod = false;
+    $gsod = false;
 
     $quest = array();
     $quest[0]["name"] = "Quand est-ce que cette version du serveur a ouvert ses portes au public ? (JJ/MM/AAAA)";
     $quest[0]["rep"] = ["08/04/2019"];
     $quest[0]["token"] = "";
-    $quest[1]["name"] = "Parfois il faut regarder hors de la boîte...";
+    /*$quest[1]["name"] = "Parfois il faut regarder hors de la boîte...";
     $quest[1]["rep"] = ["aC7Q4ij%"];
     $quest[1]["token"] = "M1oLp645";
     $quest[2]["name"] = "\\n";
@@ -57,7 +60,7 @@
     $quest[9]["token"] = "HoLc65AsQ";
     $quest[10]["name"] = "Aller, un petit tour sur le Discord, si tu n'y es pas c'est le moment de nous rejoindre ;) (https://discord.gg/7hwGEFK)\\nQuelle est la date du premier message de Traumination ? (JJ/MM/AAAA)";
     $quest[10]["rep"] = ["24/03/2019"];
-    $quest[10]["token"] = "LKAm2S89";
+    $quest[10]["token"] = "LKAm2S89";*/
 
     $error_messages = array();
     $error_messages[0] = "Nope !";
@@ -89,7 +92,10 @@
             "Qu'est-ce qu'un canife ? Un petit fien !\\n",
             "Il y a 10 types de personnes sur cette planète, ceux qui comprennent le binaire et les autres...\\n",
             "Que fait un informaticien quand il est triste ? Il se console !\\n",
-            "J'ai une très bonne blague sur les erreurs 404... Mais je la retrouve plus -[p_p]-\\n"
+            "J'ai une très bonne blague sur les erreurs 404... Mais je la retrouve plus -[p_p]-\\n",
+            "Tu connais la blague de la chaise? Dommage, elle est pliante !\\n",
+            "Quelles sont les 3 lettres préférées de Traumination ? O Q P\\n",
+            "J'ai créé ma propre marque de soda, je l'ai appelé F5 car ça raffraichit !\\n"
         ];
         $index = rand(0, sizeof($joke_list)-1);
         return $joke_list[$index];
@@ -99,7 +105,7 @@
         "kfc" => "So good...",
         "traumination" => "Sans conteste la personne la plus géniale !",
         "traumibot" => "A votre service '-[^_^]-'",
-        "/ci" => "/ban ".$pseudo." 1y",
+        "/ci" => "/ban ".$pseudo,
         "/win" => "Félicitation, vous avez gagné !",
         "win" => "Félicitation, vous avez gagné !",
         "x" => "X to doubt",
@@ -113,7 +119,9 @@
         "rm traumibot" => "Tu mériterais que je te vire de cet event !",
         "cd traumination" => "Ce dossier n'existe pas.",
         "rm traumination" => "Personne ne peut supprimer Traumination !",
-        "cd answer" => "Bien essayé !"
+        "cd answer" => "Bien essayé !",
+        "wesh" => "Wesh gros bien ou quoi ?",
+        "pipe et jambe de bois" => "Incroyable du cul"
     ];
 
     if(strtolower($message) == "help" || strtolower($message) == "oskour" || strtolower($message) == "aide"){
@@ -128,11 +136,16 @@
         $response .= "  • repeat : Répète la question en cours.\\n";
         $response .= "  • clear : Efface le contenu de la console.\\n";
     }else if(strtolower($message) == "repeat"){
-        try{
-            $response = $quest[$num]["name"];
-        }catch(Exception $e){
+        if($num >= sizeof($quest)){
             $response = "Je ne peux pas vous aider -[u_u]-";
+        }else{
+            $response = $quest[$num]["name"];
         }
+        /*try{
+            
+        }catch(Exception $e){
+            
+        }*/
     }else if(array_key_exists(strtolower($message), $easter_eggs)){
         $response = $easter_eggs[$message];
     }else{
@@ -144,7 +157,8 @@
                         $status = 1;
                         if(($num+1) >= sizeof($quest)){
                             $response = "Y a plus rien à voir. (Bien joué)";
-                            $token = "";
+                            $token = "Kj_9PoqS";
+                            $bsod = true;
                         }else{
                             $response = $quest[$num+1]["name"];
                             $token = $quest[$num+1]["token"];
@@ -161,12 +175,42 @@
                 $response = "Tricheur de ses morts";
             }
         }else{
-            $response = "Ce quizz est déjà terminé";
+            if($num == sizeof($quest)){
+                if($message == "0" && $token=="Kj_9PoqS"){
+                    $status = 1;
+                    $rsod = true;
+                    $token = "FINAL_LINE_12387@";
+                    $response = "";
+                }else if($token!="Kj_9PoqS"){
+                    $response = "Sale tricheur";
+                }else{
+                    $response = "SYSTEM FAILURE";
+                }
+            }else if($num == sizeof($quest)+1){
+                if($message == "123456789" && $token=="FINAL_LINE_12387@"){
+                    $status = 1;
+                    $gsod = true;
+                    $token = "";
+                    $response = "Fin du quiz !";
+                }else if($token!="FINAL_LINE_12387@"){
+                    $response = "Sale tricheur";
+                }else{
+                    $response = "SYSTEM FAILURE";
+                }
+            }else{
+                $response = "Ce quiz est déjà terminé !";
+            }
         }
     }
 
     if($status == 0){
-        echo '{"status":'.$status.',"message":"'.$response.'","infos":"'.$ip.'"}';
+        echo '{"status":'.$status.',"message":"'.$response.'"}';
+    }else if($bsod){
+        echo '{"status":'.$status.',"message":"'.$response.'","BSOD":"ON","token":"'.$token.'"}';
+    }else if($rsod){
+        echo '{"status":'.$status.',"message":"'.$response.'","RSOD":"ON","token":"'.$token.'"}';
+    }else if($gsod){
+        echo '{"status":'.$status.',"message":"'.$response.'","GSOD":"ON","token":"'.$token.'"}';
     }else{
         echo '{"status":'.$status.',"message":"'.$response.'","token":"'.$token.'"}';
     }
