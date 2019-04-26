@@ -246,6 +246,7 @@
             document.getElementById("cmd").append("Entrez votre pseudo In-Game !\n");
 
             bsod_submit = function(){
+                if(step != 2) return;
                 let entry = document.getElementById("bsod_value").value;
                 if(entry.length > 0){
                     if(step == 2){
@@ -256,6 +257,7 @@
             }
 
             rsod_submit = function(){
+                if(step != 3) return;
                 let entry = document.getElementById("rsod_value").value;
                 if(entry.length > 0){
                     if(step == 3){
