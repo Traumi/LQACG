@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>Try your luck</title>
+        <meta charset="UTF-8">
         <style>
             .inv{
                 background:#1a1a1a;
@@ -13,11 +14,13 @@
                 height:50vh;
                 width:100%;
                 overflow:hidden;
+                /*overflow-y: scroll;*/
                 border-bottom:solid #414141 1px;
                 white-space: pre-wrap;
                 white-space: -moz-pre-wrap;
                 white-space: -o-pre-wrap;
                 word-wrap: break-word;
+                padding-bottom:3px;
             }
             #input{
                 width:calc(100% - 15px);
@@ -36,7 +39,6 @@
                 width:70%;
                 margin:auto;
                 margin-top:50px;
-                z-index: 2;
             }
             .start_line{
                 font-size:14px;
@@ -44,14 +46,126 @@
                 width:15px;
                 display:inline-block;
             }
-            h1,h2,h3,h4,h5,h6{
+            h1,h2,h3,h4,h5,h6,#useless_2{
                 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
                 text-align: center;
+            }
+            #useless_2{
+                transition: opacity 1s ease-out;
+                opacity:0;
+            }
+            button:focus, input:focus {
+                outline:0;
+            }
+            /* SOD Common */
+            #BSOD, #RSOD, #GSOD{
+                position:absolute;
+                bottom:0;
+                left:0;
+                top:0;
+                right:0;
+                color:white;
+                display:none;
+                font-family: 'Segoe UI Light';
+            }
+            #BSOD button, #RSOD button, #GSOD button{
+                padding:5px 10px;
+                border-top-right-radius:5px;
+                border-bottom-right-radius:5px;
+                color:white;
+                border: 2px solid white;
+                font-size:20px;
+                cursor:pointer;
+            }
+            #BSOD button:hover, #RSOD button:hover, #GSOD button:hover{
+                color:#bfbfbf;
+                border: 2px solid white;
+            }
+            #BSOD input, #RSOD input, #GSOD input{
+                border: 2px solid white;
+                padding:5px 5px;
+                border-top-left-radius:5px;
+                border-bottom-left-radius:5px;
+                border-right: none;
+                color:white;
+                font-size:20px;
+            }
+
+            /* SOD SPEC */
+            #BSOD{
+                background:rgb(42, 80, 160);
+            }
+            #BSOD button{
+                background:rgb(42, 80, 160);
+            }
+            #BSOD button:hover{
+                background:rgb(45, 60, 92);
+            }
+            #BSOD input{
+                background:rgb(45, 60, 92);
+            }
+            #RSOD{
+                background:rgb(179, 16, 43);
+            }
+            #RSOD button{
+                background:rgb(179, 16, 43);
+            }
+            #RSOD button:hover{
+                background:rgb(117, 16, 33);
+            }
+            #RSOD input{
+                background:rgb(117, 16, 33);
+            }
+            #GSOD{
+                background:rgb(32, 130, 32);
+            }
+            #GSOD button{
+                background:rgb(32, 130, 32);
+                border-radius:5px;
+            }
+            #GSOD button:hover{
+                background:rgb(18, 68, 18);
+            }
+            #GSOD input{
+                background:rgb(18, 68, 18);
             }
         </style>
     </head>
     <body>
         <div style="position:absolute;bottom:20%;left:87%;color:white;height:20px;" id="useless_1"></div>
+        <div style="position:absolute;bottom:0;left:0;top:20vh;right:0;font-size:40vh;color:darkred;display:none;" id="useless_2">PWET</div>
+        <div id="BSOD">
+            <div style="position:relative;font-size:20vh;margin-top:20px;left:10%;width:80%;">:(</div>
+            <div style="position:relative;font-size:5vh;top:2vh;left:10%;width:80%;">
+                Ce site a rencontré un problème, merci de bien vouloir rentrer le mot de passe pour continuer votre navigation
+            </div>
+            <div style="position:relative;top:5vh;left:10%;width:80%;">
+                <input type="text" id="bsod_value"/><button onclick="bsod_submit()">Envoyer</button>
+            </div>
+            <div style="position:absolute;font-size:2vh;bottom:3vh;left:10%;width:80%;">
+                En savoir plus : YWFZRNSFYNTS_LTQI_GQTHP_HTZSY
+            </div>
+        </div>
+        <div id="RSOD">
+            <div style="position:relative;font-size:20vh;top:0;left:10%;width:80%;">>:(</div>
+            <div style="position:relative;font-size:5vh;top:2vh;left:10%;width:80%;">
+                Intrusion détéctée :
+            </div>
+            <div style="position:relative;font-size:3vh;top:4vh;left:10%;width:80%;font-family:'Courier New'">Objectif : Détruire</div>
+            <div style="position:relative;top:5vh;left:10%;width:80%;">
+                <input type="text" id="rsod_value"/><button onclick="rsod_submit()">Envoyer</button>
+            </div>
+        </div>
+        <div id="GSOD">
+            <div style="position:relative;font-size:20vh;top:0;left:10%;width:80%;">:)</div>
+            <div style="position:relative;font-size:5vh;top:2vh;left:10%;width:80%;">
+                Bravo, vous avez terminé ce module !
+            </div>
+            <div style="position:relative;font-size:3vh;top:4vh;left:10%;width:80%;">Classement : <span id="rank"></span></div>
+            <div style="position:relative;top:5vh;left:10%;width:80%;">
+                <button onclick="gsod_submit()">Retourner à l'invité de commande</button>
+            </div>
+        </div>
         <div class="container">
             <h2>TraumiBoard</h2>
             <div class="inv">
@@ -67,18 +181,23 @@
                             <stop offset="0%" style="stop-color:#444;stop-opacity:1" />
                             <stop offset="100%" style="stop-color:black;stop-opacity:1" />
                         </linearGradient>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#444;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:black;stop-opacity:1" />
+                        </linearGradient>
                     </defs>
     
-                    <path d="M 0,45 L 225,45 L 250,70 L 275,45 L 500,45 L 500,50 L463,60 L 280,60 L 250,90 L 220,60 L 37,60 L 0,50 Z" fill="url(#grad1)" style="stroke:transparent;"/>
+                    <path d="M 0,45 L 225,45 L 250,70 L 275,45 L 500,45 L 500,50 L463,60 L 280,60 L 250,90 L 220,60 L 37,60 L 0,50 Z" fill="url(#grad2)" style="stroke:transparent;"/>
+                    <path d="M 225,35 L 130,35 L 125,40 L 225,40 L 250,15 L 275,40 L 375,40 L 370,35 L 275,35 L 250,15 Z" fill="url(#grad2)"/>
                     <path d="M 150,65 L 215,65 L 235,85 Z" stroke="url(#grad1)" stroke-width="3" fill="white"/>
                     <path d="M 350,65 L 285,65 L 265,85 Z" stroke="url(#grad1)" stroke-width="3" fill="white"/>
     
                     <path d="M 250,20.5 L 250,49.5" style="stroke:black;stroke-width:1px;"/>
                     <path d="M 235.5,35 L 264.5,35" style="stroke:black;stroke-width:1px;"/>
-                    <path d="M 250,35 L 250,50 L 235,35 Z" style="fill:#222; stroke:transparent;"/>
-                    <path d="M 250,35 L 250,20 L 265,35 Z" style="fill:#222; stroke:transparent;"/>
-                    <path d="M 250,35 L 250,20 L 235,35 Z" style="fill:#444; stroke:transparent;"/>
-                    <path d="M 250,35 L 250,50 L 265,35 Z" style="fill:#000; stroke:transparent;"/>
+                    <path d="M 250,35 L 250,50 L 235,35 Z" style="fill:#222; stroke:transparent;" onclick="pwet()"/>
+                    <path d="M 250,35 L 250,20 L 265,35 Z" style="fill:#222; stroke:transparent;" onclick="pwet()"/>
+                    <path d="M 250,35 L 250,20 L 235,35 Z" style="fill:#444; stroke:transparent;" onclick="pwet()"/>
+                    <path d="M 250,35 L 250,50 L 265,35 Z" style="fill:#000; stroke:transparent;" onclick="pwet()"/>
     
                     <path d="M 250,75.5 L 250,84.5" style="stroke:#940f0f;stroke-width:1px;"/>
                     <path d="M 245.5,80 L 254.5,80" style="stroke:#940f0f;stroke-width:1px;"/>
@@ -124,14 +243,43 @@
             }
 
             document.getElementById("cmd").append(createBotName());
-            document.getElementById("cmd").append("Entrez votre pseudo !\n");
+            document.getElementById("cmd").append("Entrez votre pseudo In-Game !\n");
+
+            bsod_submit = function(){
+                if(step != 2) return;
+                let entry = document.getElementById("bsod_value").value;
+                if(entry.length > 0){
+                    if(step == 2){
+                        request(num_quest, token_quest, entry, pseudo, userip);
+                    }
+                    document.getElementById("bsod_value").value = "";
+                }
+            }
+
+            rsod_submit = function(){
+                if(step != 3) return;
+                let entry = document.getElementById("rsod_value").value;
+                if(entry.length > 0){
+                    if(step == 3){
+                        request(num_quest, token_quest, entry, pseudo, userip);
+                    }
+                    document.getElementById("rsod_value").value = "";
+                }
+            }
+            gsod_submit = function(){
+                document.getElementById("GSOD").style.display = "none";
+            }
 
             submit = function(){
                 let entry = document.getElementById("input").value;
                 if(entry.length > 0){
                     document.getElementById("cmd").append("> "+entry+"\n")
-                    if(step != 0){
-                        request(num_quest, token_quest, entry, pseudo, userip);
+                    if(step != 0 || entry.toLowerCase() == "clear"){
+                        if(entry.toLowerCase() == "clear"){
+                            document.getElementById("cmd").innerHTML = "";
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append("Console effacée !\n");
+                        }else request(num_quest, token_quest, entry, pseudo, userip);
                     }
                     else{
                         pseudo = entry;
@@ -142,7 +290,9 @@
                             document.getElementById("cmd").append(createBotName());
                             document.getElementById("cmd").append("Bienvenue "+pseudo+" !\n");
                             document.getElementById("cmd").append(createBotName());
-                            document.getElementById("cmd").append("Quand est-ce que ce discord a ouvert ? (JJ/MM/AAAA)\n");
+                            document.getElementById("cmd").append("Tapez help pour obtenir l'aide !\n");
+                            document.getElementById("cmd").append(createBotName());
+                            document.getElementById("cmd").append("Quand est-ce que cette version du serveur a ouvert ses portes au public ? (JJ/MM/AAAA)\n");
                             step = 1;
                         }
                         
@@ -157,9 +307,24 @@
             hide_token1 = function(){
                 document.getElementById("useless_1").innerHTML = "";
             }
+            pwet = function(){
+                if(step == 0) return;
+                request(num_quest, token_quest, "pwet", pseudo, userip);
+                document.getElementById("useless_2").style.display = "block";
+                document.getElementById("useless_2").style.opacity = "0";
+                setTimeout(function(){
+                    document.getElementById("useless_2").style.opacity = "1";
+                }, 10); 
+                setTimeout(function(){
+                    document.getElementById("useless_2").style.opacity = "0";
+                }, 3000); 
+                setTimeout(function(){
+                    document.getElementById("useless_2").style.display = "none";
+                }, 4000); 
+            }
 
             document.addEventListener('keydown', (event) => {
-                if(!event.ctrlKey){
+                if(!event.ctrlKey && step <= 1){
                     document.getElementById("input").focus();
                     if(event.code == "Enter"){
                         submit();
@@ -193,8 +358,37 @@
                                 if(num_quest == 2) hide_token1();
                                 token_quest = resp.token;
                             }
-                            document.getElementById("cmd").append(createBotName());
-                            document.getElementById("cmd").append(resp.message+"\n")
+                            if(resp.BSOD){
+                                step = 2;
+                                token_quest = resp.token;
+                                document.getElementById("BSOD").style.display = "block";
+                                document.getElementById("RSOD").style.display = "none";
+                                document.getElementById("GSOD").style.display = "none";
+                            }else if(resp.RSOD){
+                                step = 3;
+                                token_quest = resp.token;
+                                document.getElementById("BSOD").style.display = "none";
+                                document.getElementById("RSOD").style.display = "block";
+                                document.getElementById("GSOD").style.display = "none";
+                            }else if(resp.GSOD){
+                                step = 1;
+                                token_quest = "";
+                                document.getElementById("BSOD").style.display = "none";
+                                document.getElementById("RSOD").style.display = "none";
+                                document.getElementById("GSOD").style.display = "block";
+                                switch(resp.rank){
+                                    case "1" : 
+                                        document.getElementById("rank").innerHTML = resp.rank+"er";
+                                        break;
+                                    default :
+                                        document.getElementById("rank").innerHTML = resp.rank+"eme";
+                                        break;
+                                }
+                                
+                            }else{
+                                document.getElementById("cmd").append(createBotName());
+                                document.getElementById("cmd").append(resp.message+"\n")
+                            }   
                         } 
                         else{
                             document.getElementById("cmd").append(createBotName());
@@ -208,7 +402,7 @@
                     }
                 };
 
-                xhr.open('POST', 'http://localhost/lqacg_api/view/easter_egg/data.php', true);
+                xhr.open('POST', 'http://localhost/lqacg_api/view/easter_egg/vct_data.php', true);
                 xhr.send('{"message":"'+data+'","pseudo":"'+pseudo+'","number":"'+number+'","token":"'+token+'","ip":"'+ip+'"}');
             }
 

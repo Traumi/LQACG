@@ -4,6 +4,9 @@
     header("Access-Control-Allow-Methods: OPTIONS, HEAD, GET, POST, PUT");
     header("Access-Control-Allow-Headers: Content-Type");
 
+    require_once("./database.php");
+    $db = new Database();
+
     $postdata = file_get_contents("php://input");
 	$request = json_decode($postdata, true);
 
@@ -101,6 +104,29 @@
         return $joke_list[$index];
     }
 
+    $easter_eggs_id = [
+        "kfc" => 1,
+        "traumination" => 2,
+        "traumibot" => 3,
+        "/ci" => 4,
+        "/win" => 5,
+        "win" => 6,
+        "x" => 7,
+        "gign" => 8,
+        "418" => 9,
+        "sms" => 10,
+        "chocolatine" => 11,
+        "joke" => 12,
+        "pwet" => 13,
+        "cd .." => 14,
+        "rm traumibot" => 15,
+        "cd traumination" => 16,
+        "rm traumination" => 17,
+        "cd answer" => 18,
+        "wesh" => 19,
+        "pipe et jambe de bois" => 20
+    ];
+
     $easter_eggs = [
         "kfc" => "So good...",
         "traumination" => "Sans conteste la personne la plus géniale !",
@@ -141,12 +167,21 @@
         }else{
             $response = $quest[$num]["name"];
         }
-        /*try{
-            
-        }catch(Exception $e){
-            
-        }*/
     }else if(array_key_exists(strtolower($message), $easter_eggs)){
+        $message = strtolower($message);
+        if(!$db->getEaster($pseudo)){
+            $db->createEaster($pseudo, $ip);
+        }
+        $easter_value = $db->getEaster($pseudo)['easter'];
+        if($easter_value == ""){
+            for($i = 0 ; $i < sizeof($easter_eggs_id) ; ++$i){
+                $easter_value .= "0";
+            }
+        }
+        $easter_index = $easter_eggs_id[$message]-1;
+        $easter_value[$easter_index] = "1";
+        $db->updateEaster($pseudo, $easter_value);
+
         $response = $easter_eggs[$message];
     }else{
         if($num < sizeof($quest)){
@@ -192,6 +227,12 @@
                     $gsod = true;
                     $token = "";
                     $response = "Fin du quiz !";
+                    if(!$db->get($pseudo)){
+                        $db->create($pseudo, $ip);
+                        $rank = $db->count()['rank'];
+                    }else{
+                        $rank = $db->rank($pseudo)['rank'];
+                    }
                 }else if($token!="FINAL_LINE_12387@"){
                     $response = "Sale tricheur";
                 }else{
@@ -210,7 +251,7 @@
     }else if($rsod){
         echo '{"status":'.$status.',"message":"'.$response.'","RSOD":"ON","token":"'.$token.'"}';
     }else if($gsod){
-        echo '{"status":'.$status.',"message":"'.$response.'","GSOD":"ON","token":"'.$token.'"}';
+        echo '{"status":'.$status.',"message":"'.$response.'","GSOD":"ON","token":"'.$token.'","rank":"'.$rank.'"}';
     }else{
         echo '{"status":'.$status.',"message":"'.$response.'","token":"'.$token.'"}';
     }

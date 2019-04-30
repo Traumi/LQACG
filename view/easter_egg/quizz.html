@@ -161,7 +161,7 @@
             <div style="position:relative;font-size:5vh;top:2vh;left:10%;width:80%;">
                 Bravo, vous avez terminé ce module !
             </div>
-            <div style="position:relative;font-size:3vh;top:4vh;left:10%;width:80%;">Classement : 1er</div>
+            <div style="position:relative;font-size:3vh;top:4vh;left:10%;width:80%;">Classement : <span id="rank"></span></div>
             <div style="position:relative;top:5vh;left:10%;width:80%;">
                 <button onclick="gsod_submit()">Retourner à l'invité de commande</button>
             </div>
@@ -376,6 +376,15 @@
                                 document.getElementById("BSOD").style.display = "none";
                                 document.getElementById("RSOD").style.display = "none";
                                 document.getElementById("GSOD").style.display = "block";
+                                switch(resp.rank){
+                                    case "1" : 
+                                        document.getElementById("rank").innerHTML = resp.rank+"er";
+                                        break;
+                                    default :
+                                        document.getElementById("rank").innerHTML = resp.rank+"eme";
+                                        break;
+                                }
+                                
                             }else{
                                 document.getElementById("cmd").append(createBotName());
                                 document.getElementById("cmd").append(resp.message+"\n")
