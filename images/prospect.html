@@ -133,7 +133,63 @@
                 </g>
             </g>
         </svg>
-        <svg viewBox="0 0 500 500" width="500" height="500">
+        <svg viewBox="0 0 500 500" width="500" height="500" id="mandalai">
+            <style>
+                #mandalai *{
+                    transition: 0.5s all;
+                }
+                #mandalai .fclear{
+                    fill:#147cc2; 
+                    stroke:transparent;
+                }
+                #mandalai .fmedium{
+                    fill:#0766be; 
+                    stroke:transparent;
+                }
+                #mandalai .fdark{
+                    fill:#005994; 
+                    stroke:transparent;
+                }
+                #mandalai:hover .fclear{
+                    fill:#9b0000; 
+                    stroke:transparent;
+                }
+                #mandalai:hover .fmedium{
+                    fill:#750202; 
+                    stroke:transparent;
+                }
+                #mandalai:hover .fdark{
+                    fill:#5a0606; 
+                    stroke:transparent;
+                }
+                #mandalai .sclear{
+                    stroke:#147cc2;
+                    stroke-width:1px;
+                    fill:transparent;
+                }
+                #mandalai .smedium{
+                    stroke:#0766be;
+                    stroke-width:1px;
+                    fill:transparent;
+                }
+                #mandalai .sdark{
+                    stroke:#005994;
+                    stroke-width:1px;
+                    fill:transparent;
+                }
+                #mandalai:hover .sclear{
+                    stroke:#9b0000;
+                    stroke-width:1px;
+                }
+                #mandalai:hover .smedium{
+                    stroke:#750202;
+                    stroke-width:1px;
+                }
+                #mandalai:hover .sdark{
+                    stroke:#5a0606;
+                    stroke-width:1px;
+                }
+            </style>
             <defs>
                 <linearGradient id="grad3" x1="5%" y1="5%" x2="95%" y2="95%">
                     <stop offset="0%" style="stop-color:rgb(28, 73, 168);stop-opacity:1" />
@@ -141,7 +197,60 @@
                 </linearGradient>
             </defs>
             <g fill="black">
-                <path d="M 250,225 L 225,250 L 250,275 L 275,250 Z"/>
+                <!--<path d="M 250,225 L 225,250 L 250,275 L 275,250 Z"/>-->
+                
+
+                <path d="M 250,250 L 265,265 L 265,350 L 250,365 L 285,330 L 360,360" class="sdark" style="stroke-width:2;"/>
+                <path d="M 250,250 L 265,265 L 350,265 L 365,250 L 330,285 L 360,360" class="sdark" style="stroke-width:2;"/>
+                <path d="M 360,360 L 425,425" class="sdark" style="stroke-width:2;"/>
+
+                <path d="M 250,250 L 235,265 L 235,350 L 250,365 L 215,330 L 140,360" class="smedium" style="stroke-width:2;"/>
+                <path d="M 250,250 L 235,265 L 150,265 L 135,250 L 170,285 L 140,360" class="smedium" style="stroke-width:2;"/>
+                <path d="M 140,360 L 75,425" class="smedium" style="stroke-width:2;"/>
+
+                <path d="M 250,250 L 265,235 L 265,150 L 250,135 L 285,170 L 360,140" class="smedium" style="stroke-width:2;"/>
+                <path d="M 250,250 L 265,235 L 350,235 L 365,250 L 330,215 L 360,140" class="smedium" style="stroke-width:2;"/>
+                <path d="M 360,140 L 425,75" class="smedium" style="stroke-width:2;"/>
+
+                <path d="M 250,250 L 235,235 L 235,150 L 250,135 L 215,170 L 140,140" class="sclear" style="stroke-width:2;"/>
+                <path d="M 250,250 L 235,235 L 150,235 L 135,250 L 170,215 L 140,140" class="sclear" style="stroke-width:2;"/>
+                <path d="M 140,140 L 75,75" class="sclear" style="stroke-width:2;"/>
+
+                <path d="M 250,135 L 250,90" class="smedium" style="stroke-width:2;"/>
+                <path d="M 250,365 L 250,410" class="smedium" style="stroke-width:2;"/>
+                <path d="M 135,250 L 90,250" class="smedium" style="stroke-width:2;"/>
+                <path d="M 365,250 L 410,250" class="smedium" style="stroke-width:2;"/>
+
+                <path d="M 75,75 L 250,90 L 230,70 L 250,50 L 75,75 L 90,250 L 70,230 L 50,250" class="fclear"/>
+                <path d="M 425,75 L 250,90 L 270,70 L 250,50 L 425,75 L 410,250 L 430,230 L 450,250" class="fmedium"/>
+                <path d="M 75,425 L 250,410 L 230,430 L 250,450 L 75,425 L 90,250 L 70,270 L 50,250" class="fmedium"/>
+                <path d="M 425,425 L 250,410 L 270,430 L 250,450 L 425,425 L 410,250 L 430,270 L 450,250" class="fdark"/>
+
+                <path d="M 250,55 L 235,70 L 250,85" class="fclear"/>
+                <path d="M 250,55 L 250,85 L 265,70" class="fmedium"/>
+
+                <path d="M 55,250 L 70,235 L 85,250" class="fclear"/>
+                <path d="M 55,250 L 85,250 L 70,265" class="fmedium"/>
+
+                <path d="M 445,250 L 430,235 L 415,250" class="fmedium"/>
+                <path d="M 445,250 L 415,250 L 430,265" class="fdark"/>
+
+                <path d="M 250,445 L 235,430 L 250,415" class="fmedium"/>
+                <path d="M 250,445 L 250,415 L 265,430" class="fdark"/>
+
+                
+
+                <path d="M 72.5,72.5 L 250,47.5 L 427.5,72.5 L 250,20" style="stroke:transparent;fill:black"/>
+                <path d="M 72.5,72.5 L 47.5,250 L 72.5,427.5 L 20,250" style="stroke:transparent;fill:black"/>
+                <path d="M 427.5,72.5 L 452.5,250 L 427.5,427.5 L 480,250" style="stroke:transparent;fill:black"/>
+                <path d="M 72.5,427.5 L 250,452.5 L 427.5,427.5 L 250,480" style="stroke:transparent;fill:black"/>
+
+                <path d="M 250,226 L 250,274" class="smedium"/>
+                <path d="M 226,250 L 274,250" class="smedium"/>
+                <path d="M 250,225 L 250,250 L 225,250 Z" class="fclear"/>
+                <path d="M 250,225 L 250,250 L 275,250 Z" class="fmedium"/>
+                <path d="M 250,275 L 250,250 L 225,250 Z" class="fmedium"/>
+                <path d="M 250,275 L 250,250 L 275,250 Z" class="fdark"/>
 
                 <path d="M 220,250 L 230,240 L 150,240 L 140,250 L 150,260 L 230,260 Z"/>
                 <path d="M 250,220 L 240,230 L 240,150 L 250,140 L 260,150 L 260,230 Z"/>
@@ -185,7 +294,50 @@
                 <path d="M 338,216 410,90 L 284,162 L 370,130"/>
                 <path d="M 162,284 90,410 L 216,338 L 130,370"/>
                 <path d="M 338,284 410,410 L 284,338 L 370,370"/>
+
+                <text x="180" y="255" text-anchor="middle" font-family="Verdana" fill="#111" font-size="6">Traumination</text>
             </g>
+        </svg>
+        <svg viewBox="0 0 500 500" width="500" height="500">
+            <!--Clock-->
+            <g>
+                <circle r="150" cx="250" cy="250" fill="transparent" stroke-dasharray="700 10000" stroke="black" stroke-width="4" transform="rotate(316.25 250 250)"/>
+                <path d="M 387.625,193 L 402.8125,186.25" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 400,250 L 415,250" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 387.625,307 L 402.8125,313.75" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 355,355 L 367,367" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 307,387.625 L 313.75,402.8125" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 250,400 L 250,415" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 193,387.625 L 186.25,402.8125" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 145,355 L 133,367" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 112.375,307 L 97.1875,313.75" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 100,250 L 85,250" stroke="black" stroke-width="4" fill="transparent"/>
+                <path d="M 112.375,193 L 97.1875,186.25" stroke="black" stroke-width="4" fill="transparent"/>
+            </g>
+            <!--Eye-->
+            <g>
+                <circle r="125" cx="250" cy="175" fill="transparent" stroke="black" stroke-dasharray="233 10000" stroke-width="2" transform="rotate(36.5 250 175)"/>
+                <circle r="125" cx="250" cy="325" fill="transparent" stroke="black" stroke-dasharray="233 10000" stroke-width="2" transform="rotate(216.5 250 325)"/>
+                <circle r="47" cx="275" cy="250" fill="transparent" stroke="black" stroke-dasharray="0 100 95 10000" stroke-width="2"/>
+                <circle r="47" cx="225" cy="250" fill="transparent" stroke="black" stroke-dasharray="0 100 95 10000" stroke-width="2" transform="rotate(180 225 250)"/>
+                <path d="M 200,210 a100,99 0 0,0 0,80 a100,100 0 0,1 -51,-40 a100,100 0 0,1 51,-40" fill="black" stroke-width="2" fill="none" />
+                <path d="M 300,210 a100,99 0 0,1 0,80 a100,100 0 0,0 51,-40 a100,100 0 0,0 -51,-40" fill="black" stroke-width="2" fill="none" />
+                <circle r="40" cx="250" cy="250" fill="transparent" stroke="black" stroke-width="2"/>
+            </g>
+            
+                
+            <!--Diamond Center-->
+            <g>
+                <path d="M 250,231 L 250,269" style="stroke:#940f0f;stroke-width:1px;"/>
+                <path d="M 231,250 L 269,250" style="stroke:#940f0f;stroke-width:1px;"/>
+                <path d="M 250,230 L 250,250 L 230,250 Z" style="fill:#b33131; stroke:transparent;"/>
+                <path d="M 250,230 L 250,250 L 270,250 Z" style="fill:#940f0f; stroke:transparent;"/>
+                <path d="M 250,270 L 250,250 L 230,250 Z" style="fill:#940f0f; stroke:transparent;"/>
+                <path d="M 250,270 L 250,250 L 270,250 Z" style="fill:#740404; stroke:transparent;"/>
+            </g>
+            
+            
+            
         </svg>
     </body>
 </html>
